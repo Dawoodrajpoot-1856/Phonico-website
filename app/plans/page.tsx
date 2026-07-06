@@ -1,19 +1,51 @@
 "use client";
 import { useState, useEffect } from "react";
-import Header from "../Home/header";
-import Footer from "../Home/Footer";
+import Header from "../../components/Home/header";
+import Footer from "../../components/Home/Footer";
 import Link from "next/link";
 
 const Plan = () => {
   const people = [
-    { name: "Ali Khan", work: "UI Designer", img: "https://i.pravatar.cc/300?img=1" },
-    { name: "Sara Ahmed", work: "Frontend Dev", img: "https://i.pravatar.cc/300?img=2" },
-    { name: "Usman Tariq", work: "Backend Dev", img: "https://i.pravatar.cc/300?img=3" },
-    { name: "Ayesha Noor", work: "Product Manager", img: "https://i.pravatar.cc/300?img=4" },
-    { name: "Bilal Shah", work: "Mobile App Dev", img: "https://i.pravatar.cc/300?img=5" },
-    { name: "Hina Iqbal", work: "UX Researcher", img: "https://i.pravatar.cc/300?img=6" },
-    { name: "Hamza Malik", work: "DevOps Engineer", img: "https://i.pravatar.cc/300?img=7" },
-    { name: "Zain Raza", work: "QA Engineer", img: "https://i.pravatar.cc/300?img=8" },
+    {
+      name: "Ali Khan",
+      work: "UI Designer",
+      img: "https://i.pravatar.cc/300?img=1",
+    },
+    {
+      name: "Sara Ahmed",
+      work: "Frontend Dev",
+      img: "https://i.pravatar.cc/300?img=2",
+    },
+    {
+      name: "Usman Tariq",
+      work: "Backend Dev",
+      img: "https://i.pravatar.cc/300?img=3",
+    },
+    {
+      name: "Ayesha Noor",
+      work: "Product Manager",
+      img: "https://i.pravatar.cc/300?img=4",
+    },
+    {
+      name: "Bilal Shah",
+      work: "Mobile App Dev",
+      img: "https://i.pravatar.cc/300?img=5",
+    },
+    {
+      name: "Hina Iqbal",
+      work: "UX Researcher",
+      img: "https://i.pravatar.cc/300?img=6",
+    },
+    {
+      name: "Hamza Malik",
+      work: "DevOps Engineer",
+      img: "https://i.pravatar.cc/300?img=7",
+    },
+    {
+      name: "Zain Raza",
+      work: "QA Engineer",
+      img: "https://i.pravatar.cc/300?img=8",
+    },
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -39,7 +71,8 @@ const Plan = () => {
       price: "$15/month",
       desc: "1GB Data and Unlimited Talk & Text",
       name: "Quick Start Plan",
-      details: "Enjoy our basic eSIM plan for a Month of Travel without getting a hole in your Pocket.",
+      details:
+        "Enjoy our basic eSIM plan for a Month of Travel without getting a hole in your Pocket.",
       link: "/plans/1gb-data-and-unlimited-talk-text",
       color: "bg-[#fd577d]",
     },
@@ -121,18 +154,38 @@ const Plan = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-10 justify-items-center">
           {plans.map((plan, idx) => (
-            <div key={idx} className="w-full max-w-sm bg-white rounded-xl shadow-lg p-4 flex flex-col">
-              <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 text-center">{plan.title}</h1>
-              <div className={`mt-6 rounded-lg w-full px-4 py-6 text-white text-center ${plan.color}`}>
+            <div
+              key={idx}
+              className="w-full max-w-sm bg-white rounded-xl shadow-lg p-4 flex flex-col"
+            >
+              <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 text-center">
+                {plan.title}
+              </h1>
+              <div
+                className={`mt-6 rounded-lg w-full px-4 py-6 text-white text-center ${plan.color}`}
+              >
                 <h1 className="font-bold text-2xl">{plan.price}</h1>
                 <p className="mt-2 text-sm">{plan.desc}</p>
               </div>
-              <h1 className="mt-5 text-lg font-semibold text-gray-800 text-center">{plan.name}</h1>
-              <p className="mt-3 text-sm text-gray-600 text-center">{plan.details}</p>
+              <h1 className="mt-5 text-lg font-semibold text-gray-800 text-center">
+                {plan.name}
+              </h1>
+              <p className="mt-3 text-sm text-gray-600 text-center">
+                {plan.details}
+              </p>
               <div className="mt-5 space-y-2">
-                {["High-speed internet", "Unlimited talk & text", "High-quality video streaming", "No hidden fees", "No contract (cancel anytime)"].map((text, i) => (
+                {[
+                  "High-speed internet",
+                  "Unlimited talk & text",
+                  "High-quality video streaming",
+                  "No hidden fees",
+                  "No contract (cancel anytime)",
+                ].map((text, i) => (
                   <div key={i} className="flex items-center gap-2">
-                    <img src="https://phonico.com/images/checkIcon.svg" className="w-4 h-4" />
+                    <img
+                      src="https://phonico.com/images/checkIcon.svg"
+                      className="w-4 h-4"
+                    />
                     <p className="text-sm">{text}</p>
                   </div>
                 ))}
@@ -150,24 +203,39 @@ const Plan = () => {
       {/* Features Section */}
       <div className="flex flex-wrap justify-center gap-6 mt-10 px-4">
         {features.map((item, idx) => (
-          <div key={idx} className="w-full sm:w-64 bg-[#dfdfdfdc] p-4 h-auto rounded-lg flex flex-col items-center">
+          <div
+            key={idx}
+            className="w-full sm:w-64 bg-[#dfdfdfdc] p-4 h-auto rounded-lg flex flex-col items-center"
+          >
             <img src={item.img} alt="" className="mt-4" />
             <h1 className="mt-2 font-bold text-center">{item.title}</h1>
-            <p className="mt-2 font-semibold text-sm text-center">{item.desc}</p>
+            <p className="mt-2 font-semibold text-sm text-center">
+              {item.desc}
+            </p>
           </div>
         ))}
       </div>
 
       {/* People Slider */}
       <div className="w-full py-20 bg-gray-50 mt-10 px-4">
-        <p className="font-semibold text-xl text-center">2,157 people have said how good Phonico</p>
+        <p className="font-semibold text-xl text-center">
+          2,157 people have said how good Phonico
+        </p>
         <h1 className="font-semibold text-3xl sm:text-5xl text-center mt-4">
-          The Love We’ve Earned From Our <span className="text-[#ec3c65]">Users</span>
+          The Love We’ve Earned From Our{" "}
+          <span className="text-[#ec3c65]">Users</span>
         </h1>
         <div className="flex justify-center gap-4 transition-all duration-500 flex-wrap md:flex-nowrap mt-10">
           {visiblePeople.map((p, i) => (
-            <div key={i} className="bg-white rounded-xl shadow-md p-6 text-center w-full sm:w-80 md:w-72">
-              <img src={p.img} alt={p.name} className="w-28 h-28 rounded-full mx-auto object-cover" />
+            <div
+              key={i}
+              className="bg-white rounded-xl shadow-md p-6 text-center w-full sm:w-80 md:w-72"
+            >
+              <img
+                src={p.img}
+                alt={p.name}
+                className="w-28 h-28 rounded-full mx-auto object-cover"
+              />
               <h3 className="mt-4 text-lg font-semibold">{p.name}</h3>
               <p className="text-gray-500 text-sm">{p.work}</p>
             </div>
@@ -177,7 +245,13 @@ const Plan = () => {
           {people.map((_, i) => (
             <button
               key={i}
-              onClick={() => setActiveIndex(i <= people.length - visibleCount ? i : people.length - visibleCount)}
+              onClick={() =>
+                setActiveIndex(
+                  i <= people.length - visibleCount
+                    ? i
+                    : people.length - visibleCount,
+                )
+              }
               className={`w-3 h-3 rounded-full transition ${i >= activeIndex && i < activeIndex + visibleCount ? "bg-black scale-110" : "bg-gray-400"}`}
             />
           ))}

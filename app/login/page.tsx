@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import Header from "../Home/header";
-import Footer from "../Home/Footer";
+import Header from "../../components/Home/header";
+import Footer from "../../components/Home/Footer";
 
 const page = () => {
   const [email, setEmail] = useState("");

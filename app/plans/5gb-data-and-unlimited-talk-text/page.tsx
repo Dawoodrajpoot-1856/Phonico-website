@@ -1,7 +1,7 @@
 "use client";
-import { AccordionDemo } from "@/app/components/Accordian";
-import Footer from "@/app/Home/Footer";
-import Header from "@/app/Home/header";
+import { AccordionDemo } from "@/components/Accordian";
+import Footer from "@/components/Home/Footer";
+import Header from "@/components/Home/header";
 import React, { useState, useEffect } from "react";
 
 // Type for a plan/cart item
@@ -18,7 +18,9 @@ const Page: React.FC = () => {
   // Load cart from localStorage on mount
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const storedCart: Plan[] = JSON.parse(localStorage.getItem("cart") || "[]");
+      const storedCart: Plan[] = JSON.parse(
+        localStorage.getItem("cart") || "[]",
+      );
       setCart(storedCart);
     }
   }, []);

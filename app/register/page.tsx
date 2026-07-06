@@ -1,6 +1,6 @@
 "use client";
-import Header from "../Home/header";
-import Footer from "../Home/Footer";
+import Header from "../../components/Home/header";
+import Footer from "../../components/Home/Footer";
 import { useState, useEffect } from "react";
 
 const Page = () => {
@@ -56,8 +56,8 @@ const Page = () => {
         <div className="md:w-1/2 space-y-4">
           <h1 className="font-bold text-2xl">Grab Your Phonico eSIM Now!</h1>
           <p className="font-semibold text-gray-700">
-            Stay Connected Across the USA and Beyond with attractive eSIM
-            Plans. Let’s get started!
+            Stay Connected Across the USA and Beyond with attractive eSIM Plans.
+            Let’s get started!
           </p>
 
           {!isLoggedIn ? (

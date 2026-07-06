@@ -1,7 +1,7 @@
 "use client";
-import { AccordionDemo } from "@/app/components/Accordian";
-import Footer from "@/app/Home/Footer";
-import Header from "@/app/Home/header";
+import { AccordionDemo } from "@/components/Accordian";
+import Footer from "@/components/Home/Footer";
+import Header from "@/components/Home/header";
 import React, { useState, useEffect } from "react";
 
 export interface Plan {

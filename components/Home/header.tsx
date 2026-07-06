@@ -2,9 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { LogIn, RefreshCw, UserStar } from "lucide-react";
+import { LogIn, RefreshCw, UserPlus, UserStar } from "lucide-react";
 
-// Type for a single cart item
 export interface CartItem {
   title: string;
   duration?: string;
@@ -34,70 +33,67 @@ const Header: React.FC = () => {
   return (
     <>
       <div className="bg-white sticky top-0 z-50 ">
-        <div className="flex flex-row justify-between items-center h-25 px-4 sm:px-6 md:px-0">
+        <div className="flex flex-row justify-between items-center h-22 px-4 sm:px-6 md:px-0">
           <div>
-            <img
-              className="mt-4 ml-4 sm:ml-6 md:ml-30 h-18 w-20"
-              src="https://phonico.com/_next/image/?url=%2Fimages%2FsiteLogo.png&w=96&q=75"
-              alt="Logo"
-            />
-          </div>
-
-          <div className="hidden md:flex flex-row gap-10 mr-20">
             <Link href="/">
-              <li className="list-none mt-6 font-semibold text-[#ec3c65] underline decoration-[#ec3c65] decoration-4 cursor-pointer">
+              <img
+                className="ml-4 sm:ml-6 md:ml-30 h-18 w-20 object-contain"
+                src="https://phonico.com/_next/image/?url=%2Fimages%2FsiteLogo.png&w=256&q=75"
+                alt="Logo"
+              />
+            </Link>
+          </div>
+          <div className="hidden md:flex flex-row gap-10 mr-15">
+            <Link href="/">
+              <li className="relative list-none  font-semibold text-[#ee5e7f] cursor-pointer after:content-[''] after:absolute after:left-0 after:bottom-[-8px] after:h-[6px] after:w-full after:bg-[#ee5e7f] after:rounded-full">
                 Home
               </li>
             </Link>
-
             <Link href="/plans">
-              <li className="list-none mt-6 font-semibold hover:underline decoration-4 decoration-[#ec3c65] underline-offset-4 cursor-pointer">
+              <li className="relative list-none  font-semibold text-gray-700 cursor-pointer after:content-[''] after:absolute after:left-0 after:bottom-[-8px] after:h-[6px] after:w-0 hover:after:w-full after:bg-[#ee5e7f] after:rounded-full after:transition-all after:duration-300">
                 Plans
               </li>
             </Link>
 
             <Link href="/blogs">
-              <li className="list-none mt-6 font-semibold hover:underline decoration-4 decoration-[#ec3c65] underline-offset-4 cursor-pointer">
+              {/* Blog: Hover par text gray hi rahega, bas line pink aayegi */}
+              <li className="relative list-none  font-semibold text-gray-700 cursor-pointer after:content-[''] after:absolute after:left-0 after:bottom-[-8px] after:h-[6px] after:w-0 hover:after:w-full after:bg-[#ee5e7f] after:rounded-full after:transition-all after:duration-300">
                 Blog
               </li>
             </Link>
           </div>
-
-          {/* DESKTOP ACTIONS */}
-          <div className="hidden md:flex gap-5 mr-30 mt-5">
+          <div className="hidden md:flex gap-5 mr-32">
             <button
               onClick={() => setOpen((p) => !p)}
-              className="p-2 border border-gray-300 h-12 w-15 hover:bg-gray-200 rounded"
+              className="flex items-center justify-center border border-gray-300 h-12 w-15 hover:bg-gray-50 rounded transition-colors duration-200"
             >
               <img
-                className="ml-1.5"
                 src="https://phonico.com/images/cartIcon.svg"
                 alt="Cart"
+                className="h-5 w-5" // Icon ka size lock karne ke liye
               />
             </button>
 
             <Link href="/easypay">
               <button className="flex items-center justify-center gap-2 font-bold rounded p-2 text-white h-12 w-39 bg-[#ee5e7f] hover:bg-[#ec3c65]">
-                <RefreshCw className="w-5 h-5" />
-                Top-Up-Now
+                <RefreshCw className="w-5 h-5 transform rotate-0" /> Top-Up-Now
               </button>
             </Link>
 
             <Link href="/login">
-              <button className="flex items-center justify-center gap-2 font-bold text-white p-2 h-12 w-35 bg-[#ee5e7f] hover:bg-[#ec3c65] rounded">
+              <button className="flex items-center justify-center gap-2 font-bold text-white p-2 h-12 w-30 bg-[#ee5e7f] hover:bg-[#ec3c65] rounded">
                 <LogIn className="w-5 h-5" />
                 Login
               </button>
             </Link>
 
             <Link href="/register">
-              <button className="flex items-center justify-center gap-2 p-2 border border-gray-300 h-12 w-32 hover:bg-gray-200 text-black font-bold rounded">
-                <UserStar className="w-5 h-5" />
+              <button className="flex items-center justify-center gap-2 p-2 border border-gray-200 h-12 w-32 hover:bg-gray-50 text-gray-800 font-bold rounded transition-colors duration-200">
+                <UserPlus className="h-5 w-5 text-gray-600" />
                 Sign Up
               </button>
             </Link>
           </div>
-
           {/* MOBILE TOGGLE */}
           <div className="flex md:hidden">
             <button

@@ -1,7 +1,7 @@
 "use client";
-import { AccordionDemo } from "@/app/components/Accordian";
-import Footer from "@/app/Home/Footer";
-import Header from "@/app/Home/header";
+import { AccordionDemo } from "@/components/Accordian";
+import Footer from "@/components/Home/Footer";
+import Header from "@/components/Home/header";
 import React, { useEffect, useState } from "react";
 
 // Type for a single plan/cart item
@@ -44,7 +44,6 @@ const Page: React.FC = () => {
     "No contract (cancel anytime)",
   ];
 
-
   return (
     <>
       <Header />
@@ -58,7 +57,9 @@ const Page: React.FC = () => {
             </h1>
             <div className="mt-6 rounded-lg w-full px-4 py-6 text-white bg-blue-400 text-center">
               <h1 className="font-bold text-2xl">${plan.price}/month</h1>
-              <p className="mt-2 text-sm">10GB Data and Unlimited Talk & Text</p>
+              <p className="mt-2 text-sm">
+                10GB Data and Unlimited Talk & Text
+              </p>
             </div>
             <h1 className="mt-5 text-lg font-semibold text-gray-800 text-center">
               {plan.type}
@@ -100,7 +101,9 @@ const Page: React.FC = () => {
               </div>
               <div className="flex justify-between border-b py-2 mt-2">
                 <h1 className="font-semibold text-xl">Subtotal</h1>
-                <h1 className="font-semibold text-xl">${plan.price} for 1 month</h1>
+                <h1 className="font-semibold text-xl">
+                  ${plan.price} for 1 month
+                </h1>
               </div>
             </div>
 
@@ -112,8 +115,12 @@ const Page: React.FC = () => {
             </button>
 
             <div className="flex flex-col sm:flex-row gap-4 mt-4">
-              <p className="font-semibold text-center sm:text-left">No Contract Required</p>
-              <p className="font-semibold text-center sm:text-left">Cancel Anytime</p>
+              <p className="font-semibold text-center sm:text-left">
+                No Contract Required
+              </p>
+              <p className="font-semibold text-center sm:text-left">
+                Cancel Anytime
+              </p>
             </div>
           </div>
         </div>

@@ -1,8 +1,8 @@
 "use client";
 import { useParams } from "next/navigation";
 import { useState } from "react";
-import Header from "../Home/header";
-import Footer from "../Home/Footer";
+import Header from "../../components/Home/header";
+import Footer from "../../components/Home/Footer";
 
 export default function Page() {
   const params = useParams<{ slug: string }>();

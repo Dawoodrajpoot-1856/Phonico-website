@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import Header from "../Home/header";
-import Footer from "../Home/Footer";
+import Header from "../../components/Home/header";
+import Footer from "../../components/Home/Footer";
 
 const Page = () => {
   const sections = [
@@ -46,9 +46,14 @@ const Page = () => {
         {sections.map((section, idx) => (
           <section key={idx} className="space-y-4">
             <h1 className="font-bold text-4xl">{section.title}</h1>
-            {section.date && <p className="text-lg font-semibold">{section.date}</p>}
+            {section.date && (
+              <p className="text-lg font-semibold">{section.date}</p>
+            )}
             {section.paragraphs.map((para, i) => (
-              <p key={i} className="font-semibold text-gray-700 leading-relaxed">
+              <p
+                key={i}
+                className="font-semibold text-gray-700 leading-relaxed"
+              >
                 {para}
               </p>
             ))}
