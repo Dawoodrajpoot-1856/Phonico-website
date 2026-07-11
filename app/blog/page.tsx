@@ -61,26 +61,27 @@ const Page = () => {
   return (
     <>
       <Header />
-      {/* Banner Section */}
-      <div className="w-[1270px] h-[400px] flex flex-col justify-center items-center mx-auto bg-[#fff4eeb1]">
+
+      {/* Banner Section - Made width fluid and height auto on mobile */}
+      <div className="w-full max-w-[1270px] min-h-[300px] md:h-[400px] flex flex-col justify-center items-center mx-auto bg-[#fff4eeb1] px-4 py-8 text-center">
         <div className="w-25 p-2 rounded-2xl text-center bg-red-100">
           <h1>Our Blogs</h1>
         </div>
-        <h1 className="font-semibold mt-3 text-5xl">
+        <h1 className="font-semibold mt-3 text-3xl sm:text-4xl md:text-5xl leading-tight">
           Learn with <span className="text-red-400">Phonico</span>
         </h1>
-        <p className="text-xl mt-2">
+        <p className="text-lg sm:text-xl mt-2 max-w-xl">
           Stay informed and sweeten your eSIM experience.
         </p>
       </div>
 
-      {/* Categories Buttons */}
-      <div className="flex flex-row flex-wrap justify-center gap-4 font-semibold p-4 mx-auto mt-5 border-black rounded-2xl border max-w-[800px]">
+      {/* Categories Buttons - Added horizontal margins so it doesn't touch screen edges on mobile */}
+      <div className="flex flex-row flex-wrap justify-center gap-2 sm:gap-4 font-semibold p-3 sm:p-4 mx-4 sm:mx-auto mt-5 border-black rounded-2xl border max-w-[800px]">
         {categories.map((cat) => (
           <button
             key={cat}
             onClick={() => setSelectedCategory(cat)}
-            className={`px-4 py-2 rounded-xl transition duration-200 ${
+            className={`px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base rounded-xl transition duration-200 ${
               selectedCategory.toLowerCase() === cat.toLowerCase()
                 ? "bg-[#ee5e7f] text-white"
                 : "bg-gray-100 text-gray-700 hover:bg-gray-200"
@@ -91,8 +92,8 @@ const Page = () => {
         ))}
       </div>
 
-      {/* Blogs Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-2 mx-auto max-w-[1270px] mt-6">
+      {/* Blogs Grid - Adjusted padding for mobile screens */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4 md:p-2 mx-auto max-w-[1270px] mt-6">
         {filteredBlogs &&
           filteredBlogs.map((blog: any, index: number) => {
             const categorySlug =
@@ -111,14 +112,14 @@ const Page = () => {
                   <img
                     src={blog.image || "https://via.placeholder.com/390x240"}
                     alt={blog.name || "Blog Image"}
-                    className="w-full h-60 rounded object-cover"
+                    className="w-full h-48 sm:h-56 md:h-60 rounded object-cover"
                   />
-                  <div className="p-5 pb-2">
+                  <div className="p-4 sm:p-5 pb-2">
                     <span className="inline-block px-3 py-1 text-sm font-medium text-[#ee5e7f] bg-red-50 rounded-full">
                       {blog.blog_category?.name || "Travel Tips"}
                     </span>
                     <div className="flex flex-row justify-between items-start gap-2 mt-3">
-                      <h2 className="text-xl font-bold text-gray-900 line-clamp-2 leading-tight">
+                      <h2 className="text-lg sm:text-xl font-bold text-gray-900 line-clamp-2 leading-tight">
                         {blog.name || "Untitled Blog"}
                       </h2>
                       <button className="text-gray-500 hover:text-[#ee5e7f] p-1 transition flex-shrink-0">
@@ -130,7 +131,7 @@ const Page = () => {
                     </p>
                   </div>
                 </div>
-                <div className="p-5 pt-2 flex flex-row items-center justify-between border-t border-gray-50 mt-auto">
+                <div className="p-4 sm:p-5 pt-2 flex flex-row items-center justify-between border-t border-gray-50 mt-auto">
                   <span className="text-sm font-medium text-gray-700">
                     {blog.author_name || "Anonymous"}
                   </span>
