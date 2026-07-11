@@ -18,61 +18,77 @@ const Page = () => {
   return (
     <>
       <Header />
-      <div className="w-[900px] mx-auto bg-[#faf5f0] p-4 flex flex-col gap-6 my-10 rounded-lg">
-        <div className="flex flex-row justify-between items-center">
+
+      {/* Main Container: w-[900px] hata kar w-full max-w-4xl kiya taaki screen size ke mutabiq adjust ho */}
+      <div className="w-full max-w-4xl mx-auto bg-[#faf5f0] p-4 sm:p-6 flex flex-col gap-6 my-6 sm:my-10 rounded-lg shadow-xs">
+        {/* Top Header Section: Mobile par flex-col aur center kiya, tablet/desktop par row aur spaced out */}
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-0 justify-between items-center border-b border-orange-100 pb-4 sm:pb-0">
           <img
             src="https://phonico.com/_next/image/?url=%2Fimages%2FsiteLogo.png&w=128&q=75"
             alt="Logo"
+            className="h-auto max-w-[128px]"
           />
-          <div className="flex flex-col gap-2">
-            <h1 className="font-bold text-3xl">{currentPlan?.data_usable}GB</h1>
-            <p>{currentPlan?.name}</p>
+          <div className="flex flex-col gap-1 text-center sm:text-left">
+            <h1 className="font-bold text-2xl sm:text-3xl text-gray-900">
+              {currentPlan?.data_usable}GB
+            </h1>
+            <p className="text-gray-600 text-sm sm:text-base">
+              {currentPlan?.name}
+            </p>
           </div>
-          <h1 className="font-bold text-xl">${currentPlan?.price}</h1>
+          <h1 className="font-bold text-2xl text-gray-900">
+            ${currentPlan?.price}
+          </h1>
         </div>
 
         {/* Inputs Section */}
         <div className="flex flex-col gap-4">
           <input
-            className="bg-white p-3 rounded-xl w-full border border-gray-300 focus:outline-none "
+            className="bg-white p-3 rounded-xl w-full border border-gray-300 focus:outline-none focus:border-[#EE5E7F] transition-colors text-sm sm:text-base"
             type="number"
             placeholder="Enter 15-digit IMEI"
           />
           <input
-            className="bg-white p-3 rounded-xl w-full border border-gray-300 focus:outline-none focus:border-amber-500"
+            className="bg-white p-3 rounded-xl w-full border border-gray-300 focus:outline-none focus:border-[#EE5E7F] transition-colors text-sm sm:text-base"
             type="number"
             placeholder="Enter 5-digit ZIP CODE"
           />
         </div>
 
-        {/* Pricing Breakdown (Fixed Alignment) */}
-        <div className="flex flex-col gap-3 bg-white border-gray-300 p-4 rounded">
-          <div className="flex justify-between border-b border-gray-200 items-center">
-            <h1 className="font-semibold">Discount</h1>
-            <h1 className="font-bold">$0</h1>
+        {/* Pricing Breakdown */}
+        <div className="flex flex-col gap-3 bg-white border border-gray-200 p-4 rounded-xl shadow-2xs">
+          <div className="flex justify-between border-b border-gray-100 pb-2 items-center text-sm sm:text-base">
+            <h1 className="font-semibold text-gray-700">Discount</h1>
+            <h1 className="font-bold text-gray-900">$0</h1>
           </div>
 
-          <div className="flex justify-between border-b border-gray-200 items-center">
-            <h1 className="font-semibold">Amount from wallet</h1>
-            <h1 className="font-bold">$0</h1>
+          <div className="flex justify-between border-b border-gray-100 pb-2 items-center text-sm sm:text-base">
+            <h1 className="font-semibold text-gray-700">Amount from wallet</h1>
+            <h1 className="font-bold text-gray-900">$0</h1>
           </div>
 
-          <div className="flex justify-between border-b border-gray-200 items-center">
-            <h1 className="font-semibold">Amount from card</h1>
-            <h1 className="font-bold">${currentPlan?.price}</h1>
+          <div className="flex justify-between border-b border-gray-100 pb-2 items-center text-sm sm:text-base">
+            <h1 className="font-semibold text-gray-700">Amount from card</h1>
+            <h1 className="font-bold text-gray-900">${currentPlan?.price}</h1>
           </div>
 
-          <div className="flex justify-between border-b border-gray-200 items-center pt-2 border-t border-amber-200">
-            <h1 className="font-semibold text-lg">Subtotal</h1>
-            <h1 className="font-bold text-xl ">${currentPlan?.price}</h1>
+          {/* Subtotal border and alignment fix */}
+          <div className="flex justify-between items-center pt-3 mt-1 border-t-2 border-dashed border-orange-100">
+            <h1 className="font-bold text-gray-800 text-base sm:text-lg">
+              Subtotal
+            </h1>
+            <h1 className="font-extrabold text-xl sm:text-2xl text-gray-900">
+              ${currentPlan?.price}
+            </h1>
           </div>
         </div>
 
-        {/* Pay Button */}
-        <button className="w-[850px] mx-auto p-3 rounded font-bold bg-white hover:text-white hover:bg-[#EE5E7F] text-[#EE5E7F] border-[#fbc4d0] border-2 transition-all text-sm tracking-wide shadow-sm">
+        {/* Pay Button: Fixed w-[850px] hata kar container ke mutabiq auto-adjust (w-full) kiya */}
+        <button className="w-full p-3 rounded-xl font-bold bg-white hover:text-white hover:bg-[#EE5E7F] text-[#EE5E7F] border-[#fbc4d0] border-2 transition-all text-sm tracking-wide shadow-sm uppercase">
           Pay now
         </button>
       </div>
+
       <AccordionPage />
       <Footer />
     </>
