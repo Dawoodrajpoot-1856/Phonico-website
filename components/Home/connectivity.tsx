@@ -3,23 +3,21 @@ import React from "react";
 const Connectivity = () => {
   return (
     <>
-      <div className="relative overflow-hidden w-[1320px] mt-10 md:ml-20 flex flex-col md:flex-row gap-30 p-4 md:p-10">
+      <div className="relative overflow-hidden max-w-[1320px] w-full mx-auto mt-10 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-20 p-6 md:p-10">
         {/* Wavy Blob Background Image */}
         <img
           src="https://phonico.com/images/wavyBlobRight.svg"
           alt=""
-          className="absolute right-0 top-0 h-full w-[50%] md:w-[60%] lg:w-[90%] object-cover object-right pointer-events-none z-0 opacity-80"
+          className="absolute right-0 top-0 h-full w-[60%] lg:w-[50%] object-cover object-right pointer-events-none z-0 opacity-80"
         />
 
-        {/* Left Side Content */}
-        <div className="relative z-10 md:w-1/2 flex flex-col items-center md:items-start">
-          <h1 className="font-semibold text-3xl sm:text-5xl mt-10 text-center md:text-left">
+        <div className="relative z-10 w-full md:w-1/2 flex flex-col items-center md:items-start">
+          <h1 className="font-semibold text-3xl sm:text-5xl text-center md:text-left text-slate-900 leading-tight">
             Why Choose <br />
             <span className="text-[#ec3c65] mt-3 block">PHONICO eSIM?</span>
           </h1>
 
-          {/* Paragraph with single-line flow and beautiful gray color */}
-          <p className="font-medium mt-6 text-sm sm:text-base text-center md:text-left max-w-xl md:max-w-[650px] text-slate-600 leading-relaxed">
+          <p className="font-semibold mt-6 text-2xl sm:text-base text-center md:text-left max-w-xl text-slate-600 leading-relaxed">
             When you are in the United States, there should be no complications,
             especially with connectivity. Phonico makes it simple with
             affordable USA eSIM plans built for travellers, remote workers, and
@@ -35,11 +33,11 @@ const Connectivity = () => {
         </div>
 
         {/* Content Right Side (Benefits Image) */}
-        <div className="relative z-10 md:w-1/2 flex justify-center md:justify-end">
+        <div className="relative z-10 w-full md:w-1/2 flex justify-center md:justify-end">
           <img
-            className="w-72 sm:w-96 mt-6 md:mt-20 object-contain"
+            className="w-72 sm:w-96 md:w-[450px] object-contain"
             src="https://phonico.com/_next/image/?url=%2Fimages%2FbenefitsImg1.png&w=2048&q=75"
-            alt="Benefits"
+            alt="Phonico eSIM Benefits"
           />
         </div>
       </div>

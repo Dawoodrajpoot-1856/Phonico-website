@@ -39,30 +39,48 @@ const Page = () => {
   ];
 
   return (
-    <div className="bg-[#f3f3f3] min-h-screen">
+    <>
+      {" "}
       <Header />
-
-      <main className="max-w-5xl mx-auto px-4 md:px-10 py-10 space-y-10">
-        {sections.map((section, idx) => (
-          <section key={idx} className="space-y-4">
-            <h1 className="font-bold text-4xl">{section.title}</h1>
-            {section.date && (
-              <p className="text-lg font-semibold">{section.date}</p>
-            )}
-            {section.paragraphs.map((para, i) => (
-              <p
-                key={i}
-                className="font-semibold text-gray-700 leading-relaxed"
-              >
-                {para}
-              </p>
-            ))}
-          </section>
-        ))}
-      </main>
-
+      <div className=" max-w-[1300px] mx-auto min-h-screen">
+        {/* max-w-5xl ko badal kar max-w-full kiya hai taake 1300px width use ho */}
+        <main className="max-w-full px-6 md:px-10 py-10 space-y-10">
+          {sections.map((section, idx) => (
+            <section key={idx} className="space-y-4">
+              <h1 className="font-bold text-4xl">{section.title}</h1>
+              {section.date && (
+                <p className="text-lg font-semibold">{section.date}</p>
+              )}
+              {section.paragraphs.map((para, i) => (
+                <p
+                  key={i}
+                  className="font-semibold text-gray-700 leading-relaxed"
+                >
+                  {para}
+                  Your privacy is important to Phonico. Accordingly, Phonico
+                  provides these policies so that you understand how Phonico
+                  collects, uses and, in certain circumstances, discloses the
+                  information that you provide and/or that is automatically
+                  provided to Phonico as a result of your visiting and using the
+                  Site or purchasing or using Phonico products or services. This
+                  Privacy Policy also explains the steps Phonico has taken to
+                  secure your personal information. Finally, this Privacy Policy
+                  explains your options regarding the collection, use and
+                  disclosure of your personal information. By visiting this Site
+                  or purchasing or using any Phonico product or service, you
+                  accept the practices described in this Privacy Policy. Phonico
+                  is not responsible for the content or privacy practices on any
+                  third-party website that may be linked to or from this Site.
+                  Any questions regarding this Privacy Policy should be directed
+                  to our customer service department at (484)746-6426 .
+                </p>
+              ))}
+            </section>
+          ))}
+        </main>
+      </div>
       <Footer />
-    </div>
+    </>
   );
 };
 

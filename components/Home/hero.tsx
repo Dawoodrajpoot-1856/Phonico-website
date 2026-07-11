@@ -4,42 +4,42 @@ import React from "react";
 const Hero = () => {
   return (
     <>
-      <div>
+      <div className="w-full overflow-hidden ">
         <div className="flex flex-col md:flex-row">
-          <div>
-            <p className="text-gray-600  text-lg text-md mt-10 ml-4 md:ml-30 ">
+          <div className="px-4 md:px-0">
+            <p className="text-gray-600 text-lg text-md mt-5 ml-0 md:ml-30">
               Phonico - Your Gateway to USA Connectivity
             </p>
             <img
-              className="ml-4 md:ml-32 mt-1"
+              className="ml-0 md:ml-32 mt-1"
               src="https://phonico.com/images/blueLine.svg"
               alt=""
             />
-            <h1 className="text-4xl md:text-5xl font-semibold ml-2 md:ml-32 mt-5 leading-tight">
-              Stay Connected With <br />
+            <h1 className="text-4xl md:text-5xl font-semibold ml-0 md:ml-32 mt-5 leading-tight">
+              Stay Connected With <br className="hidden md:inline" />
               <span className="text-[#ee5e7f] inline-block">Phonico</span> eSIM
               Across the
-              <br />
+              <br className="hidden md:inline" />
               USA, Instantly!
             </h1>
 
-            <p className="text-lg md:text-xl text-gray-700 ml-2 md:ml-32 mt-4 max-w-2xl leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-700 ml-0 md:ml-32 mt-4 max-w-2xl leading-relaxed">
               With Phonico eSIM, getting online in the U.S. is fast, easy, and
-              <br /> completely digital. No KYC and no restrictions on Hotspot{" "}
-              <br />
+              <br className="hidden md:inline" /> completely digital. No KYC and
+              no restrictions on Hotspot <br className="hidden md:inline" />
               Sharing or Tethering. Select your Plan, Scan the QR, Activate, and{" "}
-              <br />
+              <br className="hidden md:inline" />
               Explore with uninterrupted coverage in all 50 states of the USA.
-              <br />
+              <br className="hidden md:inline" />
               Starting from $15/Month!
             </p>
             <Link href="/plans">
-              <button className="p-3 font-bold w-60 ml-4 md:ml-32 mt-5 transition-colors duration-200 bg-[#f5577c] hover:bg-[#d83b60] rounded text-white">
+              <button className="p-3 font-bold w-60 ml-0 md:ml-32 mt-5 transition-colors duration-200 bg-[#f5577c] hover:bg-[#d83b60] rounded text-white">
                 Get Your USA eSIM Now
               </button>
             </Link>
           </div>
-          <div className="flex justify-center md:justify-start mt-5 md:mt-16">
+          <div className="flex justify-center md:justify-start mt-5 md:mt-16 px-4 md:px-0">
             <img
               className="h-auto w-full max-w-[450px] md:max-w-[600px] ml-0 md:ml-28 object-contain"
               src="/femaleHero2.webp"
@@ -49,7 +49,8 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="flex flex-row gap-5 justify-center  flex-wrap">
+      {/* Cards Section with zero styling alterations */}
+      <div className="flex flex-row gap-5 justify-center flex-wrap px-4 md:px-0 mt-10">
         <div className="w-75 bg-[#f1f1f1] p-2 h-60">
           <img className="mt-4 ml-5" src="/phoneIcon.svg" alt="" />
           <h1 className="ml-5 mt-2 text-xl font-semibold">
@@ -62,7 +63,7 @@ const Hero = () => {
         </div>
         <div className="w-75 bg-[#f1f1f1] p-2 h-60">
           <img className="mt-4 ml-5" src="/moneybag.svg" alt="" />
-          <h1 className="ml-5  text-xl mt-2 font-semibold">
+          <h1 className="ml-5 text-xl mt-2 font-semibold">
             Variety of Data Plans
           </h1>
           <p className="ml-5 text-gray-500 mt-3 font-semibold">

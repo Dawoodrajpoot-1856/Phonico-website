@@ -34,8 +34,8 @@ export default function AccordionPage() {
   ];
 
   return (
-    <div className=" bg-[#faf5f0] antialiased">
-      <div className="max-w-7xl mx-auto px-4 py-16 text-center">
+    <div className="bg-[#faf5f0] antialiased ">
+      <div className="max-w-7xl mx-auto px-4 py-12 md:py-16 text-center">
         <h1 className="text-4xl font-semibold text-gray-900 tracking-tight sm:text-5xl">
           Frequently Asked <span className="text-pink-600">Questions</span>
         </h1>
@@ -44,40 +44,42 @@ export default function AccordionPage() {
         </p>
       </div>
 
-      {/* Accordions Main Grid Section - Bottom padding ko kam kar diya hai */}
-      <div className="pb-10">
-        <div className="max-w-[1330px] mx-auto grid gap-4 px-4 sm:px-6 lg:px-8 grid-cols-1 md:grid-cols-2">
+      {/* Accordions Main Grid Section */}
+      <div className="pb-16">
+        <div className="max-w-[1330px] mx-auto grid gap-4 px-4 sm:px-6 lg:px-8 grid-cols-1 lg:grid-cols-2">
           {data.map((item, index) => {
             const isOpen = open === index;
 
             return (
               <div
                 key={index}
-                className={`w-full overflow-hidden bg-white border transition-all duration-300
-                  ${isOpen ? "border-pink-300 ring-2 ring-pink-100 scale-[1.01]" : "border-gray-200 hover:border-gray-300"}
+                className={`w-full overflow-hidden bg-white border rounded-xl transition-all duration-300
+                  ${isOpen ? "border-pink-300 ring-2 ring-pink-100 lg:scale-[1.01]" : "border-gray-200 hover:border-gray-300"}
                 `}
               >
                 <button
                   onClick={() => setOpen(isOpen ? null : index)}
-                  className="w-full flex justify-between items-center p-6 font-semibold text-left bg-white text-lg sm:text-xl group"
+                  className="w-full flex justify-between items-center p-5 sm:p-6 font-semibold text-left bg-white text-base sm:text-lg md:text-xl group"
                 >
-                  <div className="flex items-center pr-4">
+                  <div className="flex items-center pr-2 min-w-0">
                     <div
-                      className={`flex items-center mr-4 font-bold text-xl transition-colors duration-300 ${
+                      className={`flex items-center mr-3 sm:mr-4 font-bold text-lg sm:text-xl transition-colors duration-300 flex-shrink-0 ${
                         isOpen ? "text-pink-600" : "text-gray-400"
                       }`}
                     >
                       <span>{index + 1}</span>
-                      <span className="mx-2 font-light opacity-60">|</span>
+                      <span className="mx-1.5 sm:mx-2 font-light opacity-60">
+                        |
+                      </span>
                     </div>
 
-                    <span className="text-gray-900 font-semibold transition-colors duration-300">
+                    <span className="text-gray-900 font-semibold transition-colors duration-300 break-words line-clamp-2 md:line-clamp-none">
                       {item.title}
                     </span>
                   </div>
 
                   <svg
-                    className={`w-5 h-5 flex-shrink-0 transition-all duration-300 ${
+                    className={`w-5 h-5 flex-shrink-0 transition-all duration-300 ml-2 ${
                       isOpen
                         ? "rotate-180 text-pink-600"
                         : "rotate-0 text-gray-600"
@@ -104,7 +106,7 @@ export default function AccordionPage() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <div className="p-6 text-gray-700 border-t border-gray-100 text-base leading-relaxed bg-white">
+                    <div className="p-5 sm:p-6 text-gray-700 border-t border-gray-100 text-sm sm:text-base leading-relaxed bg-white">
                       {item.content}
                     </div>
                   </div>

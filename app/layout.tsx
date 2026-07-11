@@ -1,5 +1,6 @@
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
+import StoreProvider from "@/redux/StoreProvider"; // Redux Provider Import kiya
 
 export default function RootLayout({
   children,
@@ -20,7 +21,8 @@ export default function RootLayout({
           speed={200}
         />
 
-        {children}
+        {/* Pure children ko StoreProvider ke andar wrap kar diya */}
+        <StoreProvider>{children}</StoreProvider>
       </body>
     </html>
   );

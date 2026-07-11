@@ -103,7 +103,7 @@ const Footer = () => {
         </div>
 
         {/* Middle Column: Quick Links */}
-        <div className="flex flex-col md:w-1/4">
+        <div className="flex flex-col mt-10 md:w-1/4">
           <h2 className="font-semibold text-gray-900 text-lg md:text-xl mb-3">
             Quick Links
           </h2>
@@ -115,7 +115,7 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                href="/blogs"
+                href="/blog"
                 className="hover:text-[#ec3c65] transition-colors"
               >
                 Blog
@@ -140,7 +140,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        <div className="flex flex-col md:w-1/4">
+        <div className="flex flex-col mt-10 md:w-1/4">
           <h2 className="font-semibold text-gray-900 text-lg md:text-xl mb-2">
             Download the App now
           </h2>
