@@ -99,7 +99,7 @@ const Page = () => {
             </div>
 
             {/* Navigation Buttons */}
-            <div className="flex flex-row gap-3 w-full max-w-[550px] mx-auto lg:mx-0">
+            <div className="flex flex-row gap-2 bg-gray-200 w-full max-w-[550px] mx-auto lg:mx-0">
               <Link href="/login" className="flex-1">
                 <button className="w-full font-semibold rounded p-2 text-gray-500 h-12 border border-gray-300 bg-gray-100 hover:bg-gray-200 transition">
                   Login

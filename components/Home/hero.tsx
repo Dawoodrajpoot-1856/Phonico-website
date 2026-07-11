@@ -21,24 +21,18 @@ const Hero = () => {
             <h1 className="text-4xl md:text-5xl font-semibold mt-5 leading-tight text-gray-900">
               Stay Connected With <br className="hidden md:inline" />
               <span className="text-[#ee5e7f] inline-block">Phonico</span> eSIM
-              Across the
-              <br className="hidden md:inline" />
-              USA, Instantly!
+              Across the USA, Instantly!
             </h1>
 
             <p className="text-lg md:text-xl text-gray-700 mt-4 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
               With Phonico eSIM, getting online in the U.S. is fast, easy, and
-              <br className="hidden md:inline" /> completely digital. No KYC and
-              no restrictions on Hotspot <br className="hidden md:inline" />
-              Sharing or Tethering. Select your Plan, Scan the QR, Activate, and{" "}
-              <br className="hidden md:inline" />
-              Explore with uninterrupted coverage in all 50 states of the USA.
-              <br className="hidden md:inline" />
-              Starting from $15/Month!
+              completely digital. No KYC and Sharing or Tethering. Select your
+              Plan, Scan the QR, Activate, and Explore with uninterrupted
+              coverage in all 50 states of the USA. Starting from $15/Month!
             </p>
 
             <Link href="/plans">
-              <button className="p-3 font-bold w-60 mt-5 transition-colors duration-200 bg-[#f5577c] hover:bg-[#d83b60] rounded text-white shadow-sm">
+              <button className="p-3 font-bold w-60 mt-5 transition-colors duration-200 bg-[#f5577c] hover:bg-[#d83b60] rounded text-white shadow-sm cursor-pointer">
                 Get Your USA eSIM Now
               </button>
             </Link>
@@ -55,44 +49,47 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Cards Section with zero styling alterations */}
+      {/* Cards Section: Desktop par bilkul same setting, choti screen par wrap aur spacing handling */}
       <div className="flex flex-row gap-5 justify-center flex-wrap px-4 md:px-0 mt-10 mb-10">
-        <div className="w-75 bg-[#f1f1f1] p-2 h-60">
+        <div className="w-75 max-w-full bg-[#f1f1f1] p-2 h-auto min-h-60 md:h-60 pb-4 md:pb-2">
           <img className="mt-4 ml-5" src="/phoneIcon.svg" alt="" />
           <h1 className="ml-5 mt-2 text-xl font-semibold">
             Unlimited Calls & Sms
           </h1>
-          <p className="ml-5 mt-3 text-gray-500 font-semibold">
+          <p className="ml-5 mt-3 text-gray-500 font-semibold pr-3 text-sm md:text-base leading-normal">
             Phonico wants you to stay connected with your loved ones all the
             time with no limits on Calls and Sms.
           </p>
         </div>
-        <div className="w-75 bg-[#f1f1f1] p-2 h-60">
+
+        <div className="w-75 max-w-full bg-[#f1f1f1] p-2 h-auto min-h-60 md:h-60 pb-4 md:pb-2">
           <img className="mt-4 ml-5" src="/moneybag.svg" alt="" />
           <h1 className="ml-5 text-xl mt-2 font-semibold">
             Variety of Data Plans
           </h1>
-          <p className="ml-5 text-gray-500 mt-3 font-semibold">
+          <p className="ml-5 text-gray-500 mt-3 font-semibold pr-3 text-sm md:text-base leading-normal">
             Multiple travel eSIM Data plans packages, tailored to your needs so
             you can stay connected.
           </p>
         </div>
-        <div className="w-75 bg-[#f1f1f1] h-60 p-2">
+
+        <div className="w-75 max-w-full bg-[#f1f1f1] h-auto min-h-60 md:h-60 p-2 pb-4 md:pb-2">
           <img className="mt-4 ml-5" src="/speaker.svg" alt="" />
           <h1 className="ml-5 mt-2 text-xl font-semibold">
             Easy Activation Process
           </h1>
-          <p className="ml-5 mt-2 text-gray-500 font-semibold">
+          <p className="ml-5 mt-2 text-gray-500 font-semibold pr-3 text-sm md:text-base leading-normal">
             Phonico eSIM activation is so easy that anyone can do it. Just Scan
             the QR code or Activate it from the Phonico eSIM App.
           </p>
         </div>
-        <div className="w-75 bg-[#f1f1f1] p-2 h-60">
+
+        <div className="w-75 max-w-full bg-[#f1f1f1] p-2 h-auto min-h-60 md:h-60 pb-4 md:pb-2">
           <img className="mt-3 ml-5" src="/globe (1).svg" alt="" />
           <h1 className="ml-5 mt-2 text-xl font-semibold">
             WirelessSecure Network
           </h1>
-          <p className="ml-5 mt-1 text-gray-500 font-semibold">
+          <p className="ml-5 mt-1 text-gray-500 font-semibold pr-3 text-sm md:text-base leading-normal">
             Phonico understands your data privacy. We have applied the highest
             standard of security protocols.
           </p>

@@ -32,7 +32,7 @@ const Header: React.FC = () => {
     <>
       <div className="bg-white sticky top-0 z-50">
         {/* Main Navbar Wrapper */}
-        <div className="flex flex-row justify-between items-center h-20 px-4 max-w-7xl mx-auto w-full">
+        <div className="flex flex-row justify-between items-center h-20 px-4 2xl:max-w-7xl md:w-[1080px] mx-auto xl:w-full">
           <div>
             <Link href="/">
               <img
