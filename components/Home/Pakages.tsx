@@ -121,7 +121,8 @@ const Packages = () => {
           <span className="text-[#ec3c65] mt-2 block">Expectations!</span>
         </h1>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12 mt-16 justify-center max-w-[1300px] mx-auto px-4">
+        {/* Responsive Grid adjusted for Mobile, Tablet (md), and Desktop (lg) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-12 mt-16 justify-center max-w-[1300px] mx-auto px-4">
           {displayPlans.map((plan, i) => {
             const isFifthCard = i === 4;
 
@@ -130,7 +131,7 @@ const Packages = () => {
                 key={i}
                 className={`w-full flex justify-center relative ${
                   isFifthCard
-                    ? "sm:col-span-2 lg:col-start-2 lg:col-span-2 mx-auto"
+                    ? "sm:col-span-2 md:col-span-3 lg:col-start-2 lg:col-span-2 mx-auto"
                     : ""
                 }`}
               >
@@ -203,7 +204,7 @@ const Packages = () => {
                       className="w-full block"
                       onClick={() => handlePlanClick(i)} // Click karne pe data redux state me chala jayega
                     >
-                      <button className="w-full bg-[#f34b72] hover:bg-[#f33f69] active:scale-[0.99] transition-all h-10 rounded-lg text-white font-medium text-xs tracking-wider shadow-sm uppercase">
+                      <button className="w-full bg-[#f34b72] hover:bg-[#f33f69] active:scale-[0.99] transition-all h-10 rounded-lg text-white font-medium text-xs tracking-wider shadow-sm uppercase cursor-pointer">
                         View Plan
                       </button>
                     </Link>

@@ -138,7 +138,7 @@ const page = () => {
                 <div className="text-right md:text-left">
                   <Link
                     className="text-sm text-blue-500 hover:text-blue-600 font-medium underline transition-colors"
-                    href="/forgotpassword"
+                    href="/forgot-password"
                   >
                     Forgot password?
                   </Link>

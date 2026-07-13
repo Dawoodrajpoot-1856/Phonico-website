@@ -34,52 +34,54 @@ export default function AccordionPage() {
   ];
 
   return (
-    <div className="bg-[#faf5f0] antialiased ">
-      <div className="max-w-7xl mx-auto px-4 py-12 md:py-16 text-center">
-        <h1 className="text-4xl font-semibold text-gray-900 tracking-tight sm:text-5xl">
+    <div className="bg-[#faf5f0] antialiased">
+      <div className="max-w-7xl mx-auto px-4 py-10 md:py-16 text-center">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-gray-900 tracking-tight">
           Frequently Asked <span className="text-pink-600">Questions</span>
         </h1>
-        <p className="mt-4 text-lg text-gray-600">
+        <p className="mt-3 md:mt-4 text-base sm:text-lg text-gray-600">
           Curious About Our Services?
         </p>
       </div>
 
       {/* Accordions Main Grid Section */}
       <div className="pb-16">
-        <div className="max-w-[1330px] mx-auto grid gap-4 px-4 sm:px-6 lg:px-8 grid-cols-1 lg:grid-cols-2">
+        {/* Changed grid activation to md:grid-cols-2 for perfect side-by-side tablet consistency */}
+        <div className="max-w-[1330px] mx-auto grid gap-4 md:gap-5 px-4 sm:px-6 lg:px-8 grid-cols-1 md:grid-cols-2">
           {data.map((item, index) => {
             const isOpen = open === index;
 
             return (
               <div
                 key={index}
-                className={`w-full overflow-hidden bg-white border rounded-xl transition-all duration-300
-                  ${isOpen ? "border-pink-300 ring-2 ring-pink-100 lg:scale-[1.01]" : "border-gray-200 hover:border-gray-300"}
+                className={`w-full overflow-hidden bg-white border rounded-xl transition-all duration-300 h-fit
+                  ${isOpen ? "border-pink-300 ring-2 ring-pink-100 md:scale-[1.01]" : "border-gray-200 hover:border-gray-300"}
                 `}
               >
                 <button
                   onClick={() => setOpen(isOpen ? null : index)}
-                  className="w-full flex justify-between items-center p-5 sm:p-6 font-semibold text-left bg-white text-base sm:text-lg md:text-xl group"
+                  className="w-full flex justify-between items-center p-5 md:p-6 font-semibold text-left bg-white text-base sm:text-lg md:text-xl group"
                 >
-                  <div className="flex items-center pr-2 min-w-0">
+                  <div className="flex items-center pr-2 min-w-0 w-full">
+                    {/* Number block kept intact but fixed shrink on tablet */}
                     <div
-                      className={`flex items-center mr-3 sm:mr-4 font-bold text-lg sm:text-xl transition-colors duration-300 flex-shrink-0 ${
+                      className={`flex items-center mr-3 md:mr-4 font-bold text-base sm:text-lg md:text-xl transition-colors duration-300 shrink-0 ${
                         isOpen ? "text-pink-600" : "text-gray-400"
                       }`}
                     >
                       <span>{index + 1}</span>
-                      <span className="mx-1.5 sm:mx-2 font-light opacity-60">
+                      <span className="mx-1.5 md:mx-2 font-light opacity-60">
                         |
                       </span>
                     </div>
 
-                    <span className="text-gray-900 font-semibold transition-colors duration-300 break-words line-clamp-2 md:line-clamp-none">
+                    <span className="text-gray-900 font-semibold text-sm sm:text-base md:text-lg transition-colors duration-300 break-words line-clamp-2 md:line-clamp-none">
                       {item.title}
                     </span>
                   </div>
 
                   <svg
-                    className={`w-5 h-5 flex-shrink-0 transition-all duration-300 ml-2 ${
+                    className={`w-5 h-5 shrink-0 transition-all duration-300 ml-2 ${
                       isOpen
                         ? "rotate-180 text-pink-600"
                         : "rotate-0 text-gray-600"
@@ -106,7 +108,7 @@ export default function AccordionPage() {
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <div className="p-5 sm:p-6 text-gray-700 border-t border-gray-100 text-sm sm:text-base leading-relaxed bg-white">
+                    <div className="p-5 md:p-6 text-gray-700 border-t border-gray-100 text-xs sm:text-sm md:text-base leading-relaxed bg-white">
                       {item.content}
                     </div>
                   </div>

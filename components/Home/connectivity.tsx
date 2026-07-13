@@ -5,7 +5,7 @@ const Connectivity = () => {
     <>
       {/* Section 1: Why Choose Phonico */}
       <div className="relative overflow-hidden max-w-[1320px] w-full mx-auto mt-10 flex flex-col md:flex-row items-center justify-between gap-10 p-6 md:p-10">
-        {/* Wavy Blob Background Image - Mobile par clean readability ke liye opacity kam ki */}
+        {/* Wavy Blob Background Image - Mobile & Tablet par clean readability ke liye */}
         <img
           src="https://phonico.com/images/wavyBlobRight.svg"
           alt=""
@@ -39,7 +39,7 @@ const Connectivity = () => {
         {/* Content Right Side (Benefits Image) */}
         <div className="relative z-10 w-full md:w-1/2 flex justify-center md:justify-end">
           <img
-            className="w-full max-w-[280px] sm:max-w-[380px] md:max-w-[450px] object-contain长"
+            className="w-full max-w-[280px] sm:max-w-[380px] md:max-w-[450px] object-contain"
             src="https://phonico.com/_next/image/?url=%2Fimages%2FbenefitsImg1.png&w=2048&q=75"
             alt="Phonico eSIM Benefits"
           />
@@ -47,16 +47,16 @@ const Connectivity = () => {
       </div>
 
       {/* Section 2: Uninterrupted Connectivity Features */}
-      <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 p-6 mt-10 bg-white border border-gray-200 rounded-2xl justify-between items-center mx-4 xl:mx-auto w-auto max-w-[1270px] shadow-2xs">
+      <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 p-6 mt-10 bg-white border border-gray-200 rounded-2xl justify-between items-center mx-4 xl:mx-auto w-auto max-w-[1270px] shadow-2xs">
         <h1 className="font-semibold text-2xl sm:text-3xl text-center lg:text-left lg:max-w-[320px] leading-tight text-gray-900">
           Uninterrupted <br className="hidden lg:block" /> Connectivity{" "}
           <br className="hidden lg:block" /> Across the USA
         </h1>
 
-        {/* Dynamic wrapping for features grid on tablets and mobile screens */}
-        <div className="flex flex-col sm:flex-row flex-wrap lg:flex-nowrap justify-center lg:justify-between items-center sm:items-start gap-6 sm:gap-8 w-full lg:w-auto lg:flex-1 lg:max-w-[850px]">
+        {/* Handled beautifully on tablets using grid grid-cols-3 instead of messy flex wraps */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full lg:w-auto lg:flex-1 lg:max-w-[850px] items-center justify-items-center sm:justify-items-start">
           {/* Feature 1 */}
-          <div className="flex flex-row items-center gap-4 w-full sm:w-[45%] lg:w-auto justify-center sm:justify-start">
+          <div className="flex flex-row items-center gap-4 w-full justify-center sm:justify-start">
             <img
               src="https://phonico.com/images/Coverage.svg"
               alt="Coverage"
@@ -68,7 +68,7 @@ const Connectivity = () => {
           </div>
 
           {/* Feature 2 */}
-          <div className="flex flex-row items-center gap-4 w-full sm:w-[45%] lg:w-auto justify-center sm:justify-start">
+          <div className="flex flex-row items-center gap-4 w-full justify-center sm:justify-start">
             <img
               src="https://phonico.com/images/Plans.svg"
               alt="Plans"
@@ -80,14 +80,14 @@ const Connectivity = () => {
           </div>
 
           {/* Feature 3 */}
-          <div className="flex flex-row items-center gap-4 w-full sm:w-full lg:w-auto justify-center sm:justify-start lg:mt-0">
+          <div className="flex flex-row items-center gap-4 w-full justify-center sm:justify-start">
             <img
               src="https://phonico.com/images/247Support.svg"
               alt="Support"
               className="w-12 h-12 object-contain shrink-0"
             />
             <h2 className="font-semibold text-base sm:text-lg text-left leading-snug text-gray-800">
-              24/7 <br className="hidden sm:inline lg:hidden" /> Support
+              24/7 <br /> Support
             </h2>
           </div>
         </div>
@@ -112,7 +112,7 @@ const Connectivity = () => {
             Download the App now
           </p>
 
-          {/* App Store Buttons wrap nicely on tiny screens */}
+          {/* App Store Buttons wrapper */}
           <div className="flex flex-row gap-3 justify-center items-center md:justify-start w-full max-w-[320px] sm:max-w-full">
             <img
               className="w-32 sm:w-36 cursor-pointer hover:opacity-90 transition-opacity duration-200"

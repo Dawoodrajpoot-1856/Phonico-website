@@ -31,7 +31,7 @@ const Page = () => {
     setErrorMessage("");
     setIsLoading(true);
     try {
-      let res = await fetch("https://platform.phonico.com/api/register", {
+      let res = await fetch("https://platform.phonico.com/api/resend-otp", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

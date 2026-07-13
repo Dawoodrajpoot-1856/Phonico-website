@@ -25,12 +25,11 @@ const Package = () => {
 
         {/* 
           Steps Content Area: 
-          - Mobile/Tablet par grid flow chalega (md:hidden)
-          - Desktop par wahi purana absolute graphic view (md:relative)
+          - Changed md: to lg: so tablets get the clean flow layout
         */}
         <div className="w-full max-w-[1400px] mx-auto mt-10 sm:mt-6">
-          {/* 1. MOBILE & TABLET LAYOUT (Visible only on screens smaller than MD) */}
-          <div className="grid grid-cols-1 gap-8 md:hidden bg-[#faf5f0]/50 p-6 rounded-2xl border border-orange-50">
+          {/* 1. MOBILE & TABLET LAYOUT (Visible on mobile and tablet screens smaller than 1024px) */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:hidden bg-[#faf5f0]/50 p-6 rounded-2xl border border-orange-50">
             {/* Step 1 */}
             <div className="flex gap-4 items-start">
               <span className="bg-[#f34b72] text-white font-extrabold rounded-full w-10 h-10 flex items-center justify-center shrink-0 shadow-sm text-lg">
@@ -79,8 +78,8 @@ const Package = () => {
             </div>
           </div>
 
-          {/* 2. DESKTOP LAYOUT (Hidden on mobile/tablet, starts at md breakpoint) */}
-          <div className="hidden md:block relative w-full min-h-[600px] lg:min-h-[650px]">
+          {/* 2. DESKTOP LAYOUT (Hidden on mobile/tablet, starts at lg breakpoint) */}
+          <div className="hidden lg:block relative w-full min-h-[600px] lg:min-h-[650px]">
             {/* Background Image */}
             <img
               src="/stepsBg.svg"
