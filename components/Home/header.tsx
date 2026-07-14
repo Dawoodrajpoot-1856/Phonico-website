@@ -12,7 +12,7 @@ import {
   Trash2,
 } from "lucide-react";
 import { useAppSelector, useAppDispatch } from "@/redux/hooks";
-import { removeFromCart } from "@/redux/planSlice"; // 👈 adjust path/action name to match your slice
+import { removeFromCart } from "@/redux/planSlice";
 import { signOut, useSession } from "next-auth/react";
 
 const Header: React.FC = () => {
@@ -34,7 +34,7 @@ const Header: React.FC = () => {
   };
 
   const handleRemoveItem = (item: any) => {
-    dispatch(removeFromCart(item?.id));
+    dispatch(removeFromCart({ id: item.id }));
   };
 
   const cartItems = Array.isArray(cart) ? cart : [];
@@ -288,12 +288,12 @@ const Header: React.FC = () => {
                     )}
                   </div>
                   <div className="flex flex-col items-end gap-1">
-                    <span className="font-bold text-[#ee5e7f] text-sm">
-                      Rs {Number(item?.price ?? 0).toLocaleString()}
+                    <span className="font-bold text-[#ee5e7f] text-xl">
+                      ${Number(item?.price ?? 0).toLocaleString()}
                     </span>
                     <button
                       onClick={() => handleRemoveItem(item)}
-                      className="text-gray-400 hover:text-red-500 transition-colors"
+                      className=" text-red-500 transition-colors"
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
