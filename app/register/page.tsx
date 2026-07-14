@@ -1,172 +1,182 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import Header from "../../components/Home/header";
-import Footer from "../../components/Home/Footer";
+import React, { useState } from "react";
+import Header from "@/components/Home/header";
+import Footer from "@/components/Home/Footer";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-const Page = () => {
-  const [apiData, setApiData] = useState(null);
-  const [email, setEmail] = useState("");
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+const RegisterPage = () => {
+  const [step, setStep] = useState(1);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    otp: "",
+  });
   const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const router = useRouter();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        let res = await fetch("https://platform.phonico.com/api/register");
-        let data = await res.json();
-        setApiData(data);
-      } catch (error) {
-        console.log("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    setErrorMessage("");
+  const apiCall = async (endpoint: string, body: any) => {
     setIsLoading(true);
+    setErrorMessage("");
     try {
-      let res = await fetch("https://platform.phonico.com/api/resend-otp", {
+      const res = await fetch(endpoint, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email: email }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
       });
-
-      if (res.ok) {
-        setIsSuccess(true);
-      } else {
-        setErrorMessage("Something went wrong. Please try again.");
-      }
-    } catch (error) {
-      console.log("Error during registration:", error);
-      setErrorMessage("Network error. Please check your connection.");
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Failed");
+      return data;
+    } catch (err: any) {
+      setErrorMessage(err.message);
+      throw err;
     } finally {
       setIsLoading(false);
     }
   };
 
+  const handleSendOtp = async (e: React.FormEvent) => {
+    e.preventDefault();
+    await apiCall("/api/auth/send-otp", { email: formData.email });
+    setStep(2);
+  };
+  const handleVerifyOtp = async (e: React.FormEvent) => {
+    e.preventDefault();
+    await apiCall("/api/auth/verify-otp", {
+      email: formData.email,
+      otp: formData.otp,
+    });
+    setStep(3);
+  };
+  const handleFinalRegister = async (e: React.FormEvent) => {
+    e.preventDefault();
+    await apiCall("/api/auth/register", formData);
+    router.push("/login");
+  };
+
   return (
     <>
       <Header />
-
-      <div className="max-w-[1270px] mx-auto px-4 sm:px-6">
-        <div className="flex flex-col lg:flex-row items-stretch gap-10 py-10">
-          {/* Left Side: Banner Visual */}
+      <div className="max-w-[1270px] mx-auto px-4 py-10">
+        <div className="flex flex-col md:flex-row items-stretch gap-10 max-w-7xl mx-auto">
+          {/* Banner */}
           <div
-            className="w-full lg:w-1/2 min-h-[500px] lg:h-[650px] rounded overflow-hidden relative bg-cover bg-center flex flex-col justify-between p-6 sm:p-10"
+            className="w-full md:w-1/2 h-[400px] md:h-[600px] rounded-2xl bg-cover bg-center p-12 flex flex-col justify-end"
             style={{
               backgroundImage: "url('https://phonico.com/images/authImg.png')",
             }}
           >
-            {/* Top Content */}
-            <div className="space-y-3">
-              <h2 className="text-white text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
-                Welcome to Phonico
-              </h2>
-              <p className="text-white/90 text-base sm:text-lg max-w-md">
-                Your Gateway to USA Connectivity!
-              </p>
-            </div>
-
-            {/* Bottom Content */}
-            <div className="space-y-2 mt-10 lg:mt-0">
-              <h3 className="text-white text-2xl sm:text-3xl lg:text-4xl font-bold">
-                Seamless Connectivity
-              </h3>
-              <p className="text-white/90 text-sm sm:text-base">
-                Enjoy the best coverage in the USA, Mexico, and Canada!
-              </p>
-            </div>
+            <h2 className="text-white text-4xl font-bold">Join Phonico</h2>
           </div>
 
-          {/* Right Side: Content & Form */}
-          <div className="w-full lg:w-1/2 flex flex-col gap-6 justify-center">
-            <div className="space-y-3 text-center lg:text-left">
-              <h1 className="font-bold text-2xl sm:text-3xl lg:text-4xl text-gray-900">
+          <div className="w-full md:w-1/2 flex flex-col justify-center gap-6">
+            <div className="flex flex-col gap-2">
+              <h1 className="text-3xl font-bold text-gray-900">
                 Grab Your Phonico eSIM Now!
               </h1>
-              <p className="font-semibold text-gray-500 text-sm sm:text-base max-w-xl mx-auto lg:mx-0">
-                Already a Phonico eSIM profile holder? Log in to your account to
-                check details or upgrade your Plan.
+              <p className="text-gray-600">
+                Stay Connected Across the USA and Beyond with attractive eSIM
+                Plans. Let’s get started!
               </p>
             </div>
 
-            {/* Navigation Buttons */}
-            <div className="flex flex-row gap-2 bg-gray-200 w-full max-w-[550px] mx-auto lg:mx-0">
-              <Link href="/login" className="flex-1">
-                <button className="w-full font-semibold rounded p-2 text-gray-500 h-12 border border-gray-300 bg-gray-100 hover:bg-gray-200 transition">
-                  Login
-                </button>
-              </Link>
-              <Link href="/register" className="flex-1">
-                <button className="w-full flex items-center justify-center gap-2 font-bold text-white p-2 h-12 bg-[#ee5e7f] hover:bg-[#ec3c65] rounded transition">
+            {/* Toggle Tabs (Only on Step 1) */}
+            {step === 1 && (
+              <div className="flex bg-gray-100 p-1 rounded-lg max-w-[550px]">
+                <Link href="/login" className="flex-1">
+                  <button className="w-full py-3 text-gray-500 font-semibold">
+                    Login
+                  </button>
+                </Link>
+                <button className="flex-1 bg-[#ee5e7f] text-white py-3 rounded shadow font-bold">
                   Register
                 </button>
-              </Link>
-            </div>
-
-            {isSuccess ? (
-              <div className="p-4 w-full max-w-[550px] mx-auto lg:mx-0 bg-green-100 border border-green-400 text-green-700 rounded text-center font-semibold animate-fade-in">
-                🎉 Registration Successful! Welcome aboard.
               </div>
-            ) : (
-              <form
-                onSubmit={handleSubmit}
-                className="flex flex-col gap-4 w-full max-w-[550px] mx-auto lg:mx-0"
-              >
-                <div className="flex flex-col">
-                  <label
-                    htmlFor="email"
-                    className="font-medium mb-1 text-gray-700"
-                  >
-                    Enter Email
-                  </label>
-                  <input
-                    id="email"
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="name@example.com"
-                    className="border border-gray-300 rounded p-3 w-full focus:outline-none focus:ring-2 focus:ring-[#ee5e7f]"
-                    required
-                    disabled={isLoading}
-                  />
-                </div>
-
-                {errorMessage && (
-                  <p className="text-red-500 text-sm font-medium">
-                    {errorMessage}
-                  </p>
-                )}
-
-                <button
-                  type="submit"
-                  disabled={isLoading}
-                  className={`w-full px-6 py-3 font-semibold rounded transition duration-200 
-                    ${
-                      isLoading
-                        ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                        : "text-pink-500 border border-pink-300 hover:text-white hover:bg-[#ee5e7f]"
-                    }`}
-                >
-                  {isLoading ? "Submitting..." : "Submit"}
-                </button>
-              </form>
             )}
+
+            {errorMessage && (
+              <div className="p-3 bg-red-100 text-red-700 rounded-lg">
+                {errorMessage}
+              </div>
+            )}
+
+            {/* Form */}
+            <form
+              onSubmit={
+                step === 1
+                  ? handleSendOtp
+                  : step === 2
+                    ? handleVerifyOtp
+                    : handleFinalRegister
+              }
+              className="flex flex-col gap-4 w-full max-w-[550px]"
+            >
+              {step === 1 && (
+                <input
+                  type="email"
+                  required
+                  placeholder="Enter your email"
+                  className="border border-gray-300 p-3 rounded-lg w-full"
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
+                />
+              )}
+              {step === 2 && (
+                <input
+                  type="text"
+                  required
+                  placeholder="Enter 6-digit OTP"
+                  className="border p-3 rounded-lg w-full"
+                  onChange={(e) =>
+                    setFormData({ ...formData, otp: e.target.value })
+                  }
+                />
+              )}
+              {step === 3 && (
+                <>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Full Name"
+                    className="border p-3 rounded-lg w-full"
+                    onChange={(e) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
+                  />
+                  <input
+                    type="password"
+                    required
+                    placeholder="Password"
+                    className="border p-3 rounded-lg w-full"
+                    onChange={(e) =>
+                      setFormData({ ...formData, password: e.target.value })
+                    }
+                  />
+                </>
+              )}
+
+              <button
+                disabled={isLoading}
+                className="hover:Lbg-[#ee5e7f] text-pink-300 border-pink-400 border hover:text-white py-3 rounded-lg font-bold hover:bg-[#d64e6d] transition"
+              >
+                {isLoading
+                  ? "Processing..."
+                  : step === 1
+                    ? "Send OTP"
+                    : step === 2
+                      ? "Verify OTP"
+                      : "Register Now"}
+              </button>
+            </form>
           </div>
         </div>
       </div>
-
       <Footer />
     </>
   );
 };
 
-export default Page;
+export default RegisterPage;
