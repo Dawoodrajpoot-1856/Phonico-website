@@ -4,11 +4,8 @@ import React from "react";
 const Hero = () => {
   return (
     <>
-      {/* Section wrapper with clean responsive padding */}
       <div className="w-full overflow-hidden px-4 sm:px-6 lg:px-8">
-        {/* Row layout triggers on desktop (lg), stacks gracefully on mobile and tablets */}
         <div className="flex flex-col lg:flex-row items-center justify-center max-w-[1400px] mx-auto py-10 gap-10">
-          {/* Left Text Column: Centered on mobile/tablet, left-aligned on desktop */}
           <div className="w-full lg:w-1/2 text-center lg:text-left lg:pl-10 xl:pl-20">
             <p className="text-gray-600 text-lg mt-5">
               Phonico - Your Gateway to USA Connectivity
@@ -66,7 +63,7 @@ const Hero = () => {
 
           {/* Card 2 */}
           <div className="w-full lg:w-75 bg-[#f1f1f1] p-2 h-auto min-h-60 pb-4 rounded-sm mx-auto">
-            <img className="mt-4 ml-5" src="/moneybag.svg" alt="" />
+            <img className="mt-4 ml-5" src="/moneyBag.svg" alt="" />
             <h1 className="ml-5 text-xl mt-2 font-semibold">
               Variety of Data Plans
             </h1>
