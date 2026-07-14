@@ -171,50 +171,56 @@ const Header: React.FC = () => {
 
       {/* Mobile Dropdown */}
       {isOpen && (
-        <div className="lg:hidden bg-white border-t border-gray-100 px-4 py-4 flex flex-col gap-4">
+        <div className="lg:hidden bg-white border-t border-gray-100 px-4 py-6 flex flex-col gap-2 shadow-xl">
+          {/* Har link mein hover:text-[#ee5e7f] add kar diya hai */}
           <Link
             href="/"
             onClick={() => setIsOpen(false)}
-            className="py-2 font-bold text-center border-b"
+            className="py-3 font-bold text-center border-b border-gray-100 hover:text-[#ee5e7f] hover:bg-gray-50 transition-colors"
           >
             Home
           </Link>
           <Link
             href="/plans"
             onClick={() => setIsOpen(false)}
-            className="py-2 font-bold text-center border-b"
+            className="py-3 font-bold text-center border-b border-gray-100 hover:text-[#ee5e7f] hover:bg-gray-50 transition-colors"
           >
             Plans
           </Link>
           <Link
             href="/blog"
             onClick={() => setIsOpen(false)}
-            className="py-2 font-bold text-center border-b"
+            className="py-3 font-bold text-center border-b border-gray-100 hover:text-[#ee5e7f] hover:bg-gray-50 transition-colors"
           >
             Blog
           </Link>
 
-          {session ? (
-            <button
-              onClick={handleLogout}
-              className="font-bold rounded p-3 w-full bg-white border border-gray-100 text-[#ee5e7f] flex items-center justify-center gap-2 hover:bg-gray-50 transition-colors"
-            >
-              <LogOut className="w-4 h-4" /> Logout
-            </button>
-          ) : (
-            <div className="grid grid-cols-2 gap-3">
-              <Link href="/login" onClick={() => setIsOpen(false)}>
-                <button className="font-bold rounded p-3 text-gray-800 w-full bg-gray-100">
-                  Login
-                </button>
-              </Link>
-              <Link href="/register" onClick={() => setIsOpen(false)}>
-                <button className="font-bold rounded p-3 text-white w-full bg-[#ee5e7f]">
-                  Sign Up
-                </button>
-              </Link>
-            </div>
-          )}
+          <div className="mt-4">
+            {session ? (
+              <button
+                onClick={() => {
+                  handleLogout();
+                  setIsOpen(false);
+                }}
+                className="font-bold rounded-lg p-3 w-full border border-[#ee5e7f] text-[#ee5e7f] flex items-center justify-center gap-2 hover:bg-[#ee5e7f] hover:text-white transition-all"
+              >
+                <LogOut className="w-4 h-4" /> Logout
+              </button>
+            ) : (
+              <div className="grid grid-cols-2 gap-3">
+                <Link href="/login" onClick={() => setIsOpen(false)}>
+                  <button className="font-bold rounded-lg p-3 text-gray-800 w-full bg-gray-100 hover:bg-gray-200 transition-colors">
+                    Login
+                  </button>
+                </Link>
+                <Link href="/register" onClick={() => setIsOpen(false)}>
+                  <button className="font-bold rounded-lg p-3 text-white w-full bg-[#ee5e7f] hover:bg-[#d64f6e] transition-colors">
+                    Sign Up
+                  </button>
+                </Link>
+              </div>
+            )}
+          </div>
         </div>
       )}
 
