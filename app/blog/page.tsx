@@ -77,24 +77,27 @@ const Page = () => {
   return (
     <>
       <Header />
-      <div className="w-[1270px] h-[400px] flex flex-col justify-center items-center mx-auto bg-[#fff4eeb1]">
-        <div className=" w-25 p-2 rounded-2xl text-center bg-red-100">
+      <div className="w-full max-w-[1270px] h-auto min-h-[400px] flex flex-col justify-center items-center mx-auto bg-[#fff4eeb1] px-4 py-8 text-center">
+        <div className="w-25 p-2 rounded-2xl text-center bg-red-100">
           <h1>Our Blogs</h1>
         </div>
-        <h1 className="font-semibold mt-3 text-5xl">
+
+        <h1 className="font-semibold mt-3 text-3xl md:text-5xl">
           Learn with <span className="text-red-400">Phonico</span>
         </h1>
-        <p className="text-xl mt-2">
+
+        <p className="text-lg md:text-xl mt-2 max-w-xl">
           Stay informed and sweeten your eSIM experience with our expert
           insights and practical tips.
         </p>
-        <div className="mt-5">
+
+        <div className="mt-5 flex flex-wrap justify-center gap-2">
           <input
             placeholder="Search Blogs"
-            className="p-3 bg-white border w-80 rounded-l"
+            className="p-3 bg-white border w-full max-w-[320px] rounded"
             type="text"
           />
-          <button className="p-3 bg-[#ee5e7f] w-25 rounded text-white font-semibold">
+          <button className="p-3 bg-[#ee5e7f] w-full max-w-[100px] rounded text-white font-semibold">
             Search
           </button>
         </div>

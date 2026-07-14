@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <>
       <div className="w-full overflow-hidden px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row items-center justify-center max-w-[1400px] mx-auto py-10 gap-10">
+        <div className="flex flex-col lg:flex-row items-center justify-center max-w-[1400px] mx-auto py-10 gap-0">
           <div className="w-full lg:w-1/2 text-center lg:text-left lg:pl-10 xl:pl-20">
             <p className="text-gray-600 text-lg mt-5">
               Phonico - Your Gateway to USA Connectivity
@@ -47,7 +47,7 @@ const Hero = () => {
       </div>
 
       {/* Cards Section: Desktop par Flex, Tablets (md) par clean 2x2 grid, Mobile par stacked */}
-      <div className="max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 mt-10 mb-10">
+      <div className="max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 mt-5 mb-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:flex lg:flex-row lg:justify-center gap-5">
           {/* Card 1 */}
           <div className="w-full lg:w-75 bg-[#f1f1f1] p-2 h-auto min-h-60 pb-4 rounded-sm mx-auto">
