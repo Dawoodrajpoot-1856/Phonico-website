@@ -56,7 +56,7 @@ const Header: React.FC = () => {
           <Link href="/">
             <img
               className="h-18 w-20 object-contain"
-              src="https://phonico.com/_next/image/?url=%2Fimages%2FsiteLogo.png&w=256&q=75"
+              src="https://phonico-website.vercel.app/_next/image?url=%2FsiteLogo.png&w=256&q=75"
               alt="Logo"
             />
           </Link>

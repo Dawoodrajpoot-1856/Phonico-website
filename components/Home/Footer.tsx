@@ -9,7 +9,7 @@ const Footer = () => {
         {/* Left Column: Logo & Contact info */}
         <div className="flex flex-col md:w-1/3">
           <img
-            src="https://phonico.com/_next/image/?url=%2Fimages%2FsiteLogo.png&w=128&q=75"
+            src="https://phonico-website.vercel.app/_next/image?url=%2FsiteLogo.png&w=256&q=75"
             alt="Phonico Logo"
             className="h-18 w-20 object-contain self-start"
           />
