@@ -4,10 +4,10 @@ import React from "react";
 const Hero = () => {
   return (
     <>
-      <div className="w-[calc(100%-0.75rem)] overflow-hidden ml-3 px-4 lg:px-8 ">
+      <div className="w-[calc(100%-0.75rem)] overflow-hidden mt-5 ml-3 px-4 lg:px-8 ">
         <div className="flex flex-col lg:flex-row max-w-[1270px] mx-auto py-14 gap-6">
           <div className="w-full  lg:w-1/2 text-center lg:text-left">
-            <p className="text-gray-600 text-lg">
+            <p className="text-gray-600 mt-2 text-lg">
               Phonico - Your Gateway to USA Connectivity
             </p>
             <img
