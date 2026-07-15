@@ -41,22 +41,31 @@ const LoginPage = () => {
         <div className="flex flex-col md:flex-row items-stretch gap-10 max-w-7xl mx-auto py-6 md:py-10">
           {/* Banner Section - Exact Match */}
           <div
-            className="w-full md:w-1/2 h-[350px] sm:h-[450px] md:h-[650px] rounded-2xl overflow-hidden relative bg-cover bg-center flex flex-col justify-between p-6 sm:p-8 md:p-12 shrink-0"
+            className="w-full md:w-1/2 h-[350px] sm:h-[450px] md:h-[650px] rounded-2xl overflow-hidden relative bg-cover bg-center flex flex-col justify-between p-6 sm:p-8 md:p-12 shrink-0 text-center"
             style={{
               backgroundImage: "url('https://phonico.com/images/authImg.png')",
             }}
           >
+            {/* Top Section */}
             <div className="flex flex-col gap-2">
-              <h2 className="text-white text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
+              <h2 className="text-white text-3xl sm:text-4xl md:text-5xl font-bold leading-tight drop-shadow-lg">
                 Welcome to Phonico
               </h2>
-              <p className="text-white/90 text-sm sm:text-base md:text-lg max-w-sm">
+              <p className="text-white text-sm sm:text-base md:text-lg max-w-sm mx-auto font-medium drop-shadow-md">
                 Your Gateway to USA Connectivity!
               </p>
             </div>
-          </div>
 
-          {/* Form Container - Exact Match */}
+            {/* Bottom Section */}
+            <div className="flex flex-col gap-2">
+              <p className="text-white text-2xl md:text-3xl font-bold drop-shadow-lg">
+                Seamless Connectivity
+              </p>
+              <p className="text-white text-sm sm:text-base md:text-lg max-w-sm mx-auto font-medium drop-shadow-md">
+                Enjoy the best coverage in the USA, Mexico, and Canada!
+              </p>
+            </div>
+          </div>
           <div className="w-full md:w-1/2 flex flex-col gap-6 justify-center">
             {status === "authenticated" ? (
               <div className="text-center p-6 border rounded-lg bg-gray-50">

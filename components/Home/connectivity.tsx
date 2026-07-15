@@ -5,11 +5,11 @@ const Connectivity = () => {
     <>
       {/* Section 1: Why Choose Phonico */}
       <div className="relative overflow-hidden max-w-[1320px] w-full mx-auto mt-10 flex flex-col md:flex-row items-center justify-between gap-10 p-6 md:p-10">
-        {/* Wavy Blob Background Image - Mobile & Tablet par clean readability ke liye */}
+        {/* Wavy Blob Background Image - Width Bardi Gai Hai (w-[100%] md:w-[90%] lg:w-[110%]) */}
         <img
           src="https://phonico.com/images/wavyBlobRight.svg"
           alt=""
-          className="absolute right-0 top-0 h-full w-[80%] md:w-[60%] lg:w-[50%] object-cover object-right pointer-events-none z-0 opacity-30 md:opacity-80"
+          className="absolute right-0 top-0 h-full w-[100%] md:w-[90%] lg:w-[110%] object-cover object-right pointer-events-none z-0 opacity-30 md:opacity-80"
         />
 
         <div className="relative z-10 w-full md:w-1/2 flex flex-col items-center md:items-start">
@@ -20,8 +20,8 @@ const Connectivity = () => {
             </span>
           </h1>
 
-          {/* Text alignment fixing for standard screens */}
-          <p className="font-medium mt-6 text-sm sm:text-base text-center md:text-left max-w-xl text-slate-600 leading-relaxed">
+          {/* Paragraph Text Size Barha Dia Gia Hai (text-lg md:text-lg) */}
+          <p className="font-medium mt-6 text-lg md:text-lg text-center md:text-left max-w-xl text-slate-600 leading-relaxed">
             When you are in the United States, there should be no complications,
             especially with connectivity. Phonico makes it simple with
             affordable USA eSIM plans built for travellers, remote workers, and

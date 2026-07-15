@@ -78,13 +78,11 @@ const Package = () => {
             </div>
           </div>
 
-          {/* 2. DESKTOP LAYOUT (Hidden on mobile/tablet, starts at lg breakpoint) */}
-          <div className="hidden lg:block relative w-full min-h-[600px] lg:min-h-[650px]">
-            {/* Background Image */}
+          <div className="hidden lg:block relative  w-full min-h-[600px] lg:min-h-[650px]">
             <img
               src="/stepsBg.svg"
               alt="Steps Background"
-              className="absolute inset-0 w-full h-full object-contain pointer-events-none z-0"
+              className="absolute inset-0 ml-20 w-[450px] h-full object-contain pointer-events-none z-0"
             />
 
             {/* Step 1 - Left / Bottom-ish area */}

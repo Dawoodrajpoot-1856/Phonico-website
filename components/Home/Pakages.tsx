@@ -114,7 +114,7 @@ const Packages = () => {
         backgroundImage: "url('https://phonico.com/images/wavyBlob.svg')",
       }}
     >
-      <div className="max-w-[1330px] px-4 mx-auto">
+      <div className="max-w-[1330px] mx-auto">
         <h1 className="font-semibold text-3xl sm:text-4xl lg:text-5xl text-center text-gray-900 leading-tight">
           Buy the Best eSIM Prepaid Plans Meeting All Your{" "}
           <br className="hidden md:inline" />
@@ -122,7 +122,7 @@ const Packages = () => {
         </h1>
 
         {/* Responsive Grid adjusted for Mobile, Tablet (md), and Desktop (lg) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-12 mt-16 justify-center max-w-[1300px] mx-auto px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-12 mt-20 justify-center max-w-[1300px] mx-auto">
           {displayPlans.map((plan, i) => {
             const isFifthCard = i === 4;
 
@@ -145,15 +145,6 @@ const Packages = () => {
                       className="absolute left-[-12px] right-[-12px] top-[72px] rounded-md px-4 py-3 text-white text-center shadow-lg z-20"
                       style={{ backgroundColor: plan.bgColor }}
                     >
-                      <div
-                        className="absolute bottom-[-6px] left-0 w-0 h-0 border-t-[6px] border-r-[6px] border-r-transparent filter brightness-75"
-                        style={{ borderTopColor: plan.bgColor }}
-                      />
-                      <div
-                        className="absolute bottom-[-6px] right-0 w-0 h-0 border-t-[6px] border-l-[6px] border-l-transparent filter brightness-75"
-                        style={{ borderTopColor: plan.bgColor }}
-                      />
-
                       <h4 className="font-semibold text-xl tracking-wide drop-shadow-sm">
                         {plan.price}
                       </h4>
@@ -197,7 +188,6 @@ const Packages = () => {
                     </div>
                   </div>
 
-                  {/* Button Wrapper with onClick to Save in Redux */}
                   <div className="mt-6 w-full">
                     <Link
                       href={plan.link}

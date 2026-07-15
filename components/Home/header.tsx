@@ -170,59 +170,59 @@ const Header: React.FC = () => {
       </div>
 
       {/* Mobile Dropdown */}
-     {isOpen && (
-  <div className="lg:hidden bg-white border-t border-gray-100 px-4 py-6 flex flex-col gap-2 shadow-xl">
-    {/* Har link mein hover:text-[#ee5e7f] add kar diya hai */}
-    <Link
-      href="/"
-      onClick={() => setIsOpen(false)}
-      className="py-3 font-bold text-center border-b border-gray-100 hover:text-[#ee5e7f] hover:bg-gray-50 transition-colors"
-    >
-      Home
-    </Link>
-    <Link
-      href="/plans"
-      onClick={() => setIsOpen(false)}
-      className="py-3 font-bold text-center border-b border-gray-100 hover:text-[#ee5e7f] hover:bg-gray-50 transition-colors"
-    >
-      Plans
-    </Link>
-    <Link
-      href="/blog"
-      onClick={() => setIsOpen(false)}
-      className="py-3 font-bold text-center border-b border-gray-100 hover:text-[#ee5e7f] hover:bg-gray-50 transition-colors"
-    >
-      Blog
-    </Link>
+      {isOpen && (
+        <div className="lg:hidden bg-white border-t border-gray-100 px-4 py-6 flex flex-col gap-2 shadow-xl">
+          {/* Har link mein hover:text-[#ee5e7f] add kar diya hai */}
+          <Link
+            href="/"
+            onClick={() => setIsOpen(false)}
+            className="py-3 font-bold text-center border-b border-gray-100 hover:text-[#ee5e7f] hover:bg-gray-50 transition-colors"
+          >
+            Home
+          </Link>
+          <Link
+            href="/plans"
+            onClick={() => setIsOpen(false)}
+            className="py-3 font-bold text-center border-b border-gray-100 hover:text-[#ee5e7f] hover:bg-gray-50 transition-colors"
+          >
+            Plans
+          </Link>
+          <Link
+            href="/blog"
+            onClick={() => setIsOpen(false)}
+            className="py-3 font-bold text-center border-b border-gray-100 hover:text-[#ee5e7f] hover:bg-gray-50 transition-colors"
+          >
+            Blog
+          </Link>
 
-    <div className="mt-4">
-      {session ? (
-        <button
-          onClick={() => {
-            handleLogout();
-            setIsOpen(false);
-          }}
-          className="font-bold rounded-lg p-3 w-full border border-[#ee5e7f] text-[#ee5e7f] flex items-center justify-center gap-2 hover:bg-[#ee5e7f] hover:text-white transition-all"
-        >
-          <LogOut className="w-4 h-4" /> Logout
-        </button>
-      ) : (
-        <div className="grid grid-cols-2 gap-3">
-          <Link href="/login" onClick={() => setIsOpen(false)}>
-            <button className="font-bold rounded-lg p-3 text-gray-800 w-full bg-gray-100 hover:bg-gray-200 transition-colors">
-              Login
-            </button>
-          </Link>
-          <Link href="/register" onClick={() => setIsOpen(false)}>
-            <button className="font-bold rounded-lg p-3 text-white w-full bg-[#ee5e7f] hover:bg-[#d64f6e] transition-colors">
-              Sign Up
-            </button>
-          </Link>
+          <div className="mt-4">
+            {session ? (
+              <button
+                onClick={() => {
+                  handleLogout();
+                  setIsOpen(false);
+                }}
+                className="font-bold rounded-lg p-3 w-full border border-[#ee5e7f] text-[#ee5e7f] flex items-center justify-center gap-2 hover:bg-[#ee5e7f] hover:text-white transition-all"
+              >
+                <LogOut className="w-4 h-4" /> Logout
+              </button>
+            ) : (
+              <div className="grid grid-cols-2 gap-3">
+                <Link href="/login" onClick={() => setIsOpen(false)}>
+                  <button className="font-bold rounded-lg p-3 text-gray-800 w-full bg-gray-100 hover:bg-gray-200 transition-colors">
+                    Login
+                  </button>
+                </Link>
+                <Link href="/register" onClick={() => setIsOpen(false)}>
+                  <button className="font-bold rounded-lg p-3 text-white w-full bg-[#ee5e7f] hover:bg-[#d64f6e] transition-colors">
+                    Sign Up
+                  </button>
+                </Link>
+              </div>
+            )}
+          </div>
         </div>
       )}
-    </div>
-  </div>
-)}
 
       {/* Cart Drawer Overlay */}
       {isCartOpen && (
@@ -233,13 +233,14 @@ const Header: React.FC = () => {
       )}
 
       {/* Cart Drawer (slides from right) */}
+      {/* Cart Drawer Container */}
       <div
-        className={`fixed top-20 right-0 h-[550px] w-full sm:w-[400px] bg-white z-[70] shadow-2xl transform transition-transform duration-300 ease-in-out flex flex-col rounded-2xl overflow-hidden ${
+        className={`fixed top-20 right-0 h-[calc(100vh-80px)] w-full rounded-2xl sm:w-[400px] bg-white z-[70] shadow-2xl transform transition-transform duration-300 ease-in-out flex flex-col rounded-l-2xl overflow-hidden ${
           isCartOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
         {/* Drawer Header */}
-        <div className="flex items-center bg-red-200 justify-between px-5 h-16 border-b border-gray-100">
+        <div className="flex items-center rounded-t-2xl bg-red-200 justify-between px-5 h-16 border-b border-gray-100 flex-shrink-0">
           <h2 className="font-bold text-lg text-gray-800 flex items-center gap-2">
             <ShoppingCart className="w-5 h-5 text-[#ee5e7f]" />
             My Cart
@@ -252,7 +253,7 @@ const Header: React.FC = () => {
           </button>
         </div>
 
-        {/* Drawer Body */}
+        {/* Scrollable Drawer Body */}
         <div className="flex-1 overflow-y-auto px-5 py-4">
           {!isMounted || cartItems.length === 0 ? (
             <div className="h-full flex flex-col items-center justify-center text-center gap-3">
@@ -299,7 +300,7 @@ const Header: React.FC = () => {
                     </span>
                     <button
                       onClick={() => handleRemoveItem(item)}
-                      className=" text-red-500 transition-colors"
+                      className="text-red-500 transition-colors"
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
@@ -310,9 +311,9 @@ const Header: React.FC = () => {
           )}
         </div>
 
-        {/* Drawer Footer */}
+        {/* Sticky Drawer Footer (Button & Subtotal) */}
         {isMounted && cartItems.length > 0 && (
-          <div className="border-t border-gray-100 bg-gray-100 p-5 flex flex-col gap-3">
+          <div className="border-t border-gray-100 bg-gray-100 p-5 flex flex-col gap-3 flex-shrink-0">
             <div className="flex justify-between items-center">
               <span className="font-semibold text-gray-700">Subtotal</span>
               <span className="font-bold text-lg text-[#ee5e7f]">

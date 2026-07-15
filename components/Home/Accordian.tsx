@@ -65,11 +65,11 @@ export default function AccordionPage() {
                   <div className="flex items-center pr-2 min-w-0 w-full">
                     {/* Number block kept intact but fixed shrink on tablet */}
                     <div
-                      className={`flex items-center mr-3 md:mr-4 font-bold text-base sm:text-lg md:text-xl transition-colors duration-300 shrink-0 ${
+                      className={`flex items-center mr-3 md:mr-4 font-semibold text-base sm:text-lg md:text-xl transition-colors duration-300 shrink-0 ${
                         isOpen ? "text-pink-600" : "text-gray-400"
                       }`}
                     >
-                      <span>{index + 1}</span>
+                      <span className="text-5xl decoration">{index + 1}</span>
                       <span className="mx-1.5 md:mx-2 font-light opacity-60">
                         |
                       </span>
