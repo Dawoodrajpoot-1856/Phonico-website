@@ -4,7 +4,7 @@ const Connectivity = () => {
   return (
     <>
       {/* Section 1: Why Choose Phonico */}
-      <div className="relative overflow-hidden max-w-[1320px] w-full mx-auto mt-10 flex flex-col md:flex-row items-center justify-between gap-10 p-6 md:p-10">
+      <div className="relative overflow-hidden max-w-[1320px] w-full mx-auto mt-5 flex flex-col md:flex-row items-center justify-between gap-10 p-6 md:p-10">
         {/* Wavy Blob Background Image - Width Bardi Gai Hai (w-[100%] md:w-[90%] lg:w-[110%]) */}
         <img
           src="https://phonico.com/images/wavyBlobRight.svg"
