@@ -6,7 +6,7 @@ const Hero = () => {
     <>
       <div className="w-[calc(100%-0.75rem)] overflow-hidden ml-3 px-4 lg:px-8 ">
         <div className="flex flex-col lg:flex-row max-w-[1270px] mx-auto py-14 gap-6">
-          <div className="w-full  lg:w-1/2 text-center lg:text-left mt-8 lg:mt-16">
+          <div className="w-full  lg:w-1/2 text-center lg:text-left">
             <p className="text-gray-600 text-lg">
               Phonico - Your Gateway to USA Connectivity
             </p>
@@ -36,11 +36,11 @@ const Hero = () => {
             </Link>
           </div>
 
-          <div className="w-full lg:w-1/2 flex mt-6 lg:mt-10 justify-center lg:justify-end ">
+          <div className="w-full lg:w-1/2 flex  justify-center lg:justify-end ">
             <img
               src="/femaleHero2.webp"
               alt="Phonico eSIM User"
-              className="w-full h-auto max-w-[420px] object-contain drop-shadow-xl"
+              className="w-full h-auto object-contain drop-shadow-xl"
             />
           </div>
         </div>
