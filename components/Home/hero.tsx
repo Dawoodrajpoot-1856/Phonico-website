@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <>
       <div className="w-[calc(100%-0.75rem)] overflow-hidden  ml-3 px-4 lg:px-8 ">
-        <div className="flex flex-col lg:flex-row max-w-[1270px] mx-auto py-14 gap-6">
+        <div className="flex flex-col lg:flex-row max-w-[1270px] mx-auto  gap-6">
           <div className="w-full  lg:w-1/2 text-center lg:text-left">
             <p className="text-gray-600 mt-4 text-lg">
               Phonico - Your Gateway to USA Connectivity
