@@ -7,7 +7,7 @@ const Hero = () => {
       <div className="w-[calc(100%-0.75rem)] overflow-hidden  ml-3 px-4 lg:px-8 ">
         <div className="flex flex-col lg:flex-row max-w-[1270px] mx-auto py-14 gap-6">
           <div className="w-full  lg:w-1/2 text-center lg:text-left">
-            <p className="text-gray-600 text-lg">
+            <p className="text-gray-600 mt-4 text-lg">
               Phonico - Your Gateway to USA Connectivity
             </p>
             <img
@@ -15,7 +15,7 @@ const Hero = () => {
               src="https://phonico.com/images/blueLine.svg"
               alt=""
             />
-            <h1 className="text-5xl sm:text-4xl mt-5 lg:text-5xl  font-semibold  leading-tight text-gray-900">
+            <h1 className="text-5xl sm:text-4xl mt-3 lg:text-5xl  font-semibold  leading-tight text-gray-900">
               Stay Connected With <br />
               <span className="text-[#ee5e7f] inline-block">Phonico</span> eSIM
               Across the USA, Instantly!
@@ -30,7 +30,7 @@ const Hero = () => {
             </p>
 
             <Link href="/plans">
-              <button className="p-3 font-bold w-full sm:w-auto lg:w-80 mt-6 transition-colors duration-200 bg-[#f5577c] hover:bg-[#d83b60] rounded text-white shadow-sm cursor-pointer">
+              <button className="p-3 font-bold w-full sm:w-auto lg:w-70 mt-6 transition-colors duration-200 bg-[#f5577c] hover:bg-[#d83b60] rounded text-white shadow-sm cursor-pointer">
                 Get Your USA eSIM Now
               </button>
             </Link>
