@@ -4,9 +4,10 @@ import React from "react";
 const Hero = () => {
   return (
     <>
-      <div className="w-[calc(100%-0.75rem)] overflow-hidden  ml-3 px-4 lg:px-8 ">
-        <div className="flex flex-col lg:flex-row max-w-[1270px] mx-auto  gap-6">
-          <div className="w-full  lg:w-1/2 text-center lg:text-left">
+      {/* Header ke container ke barabar max-w-7xl aur mx-auto set kar diya hai */}
+      <div className="overflow-hidden 2xl:max-w-7xl mx-auto px-4 lg:px-8 w-full">
+        <div className="flex flex-col lg:flex-row max-w-[1270px] mx-auto gap-6">
+          <div className="w-full lg:w-1/2 text-center lg:text-left">
             <p className="text-gray-600 mt-4 text-lg">
               Phonico - Your Gateway to USA Connectivity
             </p>
@@ -15,7 +16,7 @@ const Hero = () => {
               src="https://phonico.com/images/blueLine.svg"
               alt=""
             />
-            <h1 className="text-5xl sm:text-4xl mt-3 lg:text-5xl  font-semibold  leading-tight text-gray-900">
+            <h1 className="text-5xl sm:text-4xl mt-3 lg:text-5xl font-semibold leading-tight text-gray-900">
               Stay Connected With <br />
               <span className="text-[#ee5e7f] inline-block">Phonico</span> eSIM
               Across the USA, Instantly!
@@ -36,7 +37,7 @@ const Hero = () => {
             </Link>
           </div>
 
-          <div className="w-full lg:w-1/2 flex  justify-center lg:justify-end ">
+          <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
             <img
               src="/femaleHero2.webp"
               alt="Phonico eSIM User"
@@ -46,8 +47,7 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Cards Section */}
-      <div className="w-[calc(100%-0.75rem)] px-4 lg:px-8 ml-3 mb-10 overflow-hidden">
+      <div className="2xl:max-w-7xl mx-auto px-4 lg:px-8 mb-10 overflow-hidden w-full">
         <div className="max-w-[1270px] mx-auto">
           <div className="flex flex-col lg:flex-row justify-center gap-5">
             <div className="w-full lg:w-75 bg-[#f1f1f1] p-2 h-auto min-h-60 pb-4 rounded-sm mx-auto">
@@ -61,7 +61,6 @@ const Hero = () => {
               </p>
             </div>
 
-            {/* Card 2 */}
             <div className="w-full lg:w-75 bg-[#f1f1f1] p-2 h-auto min-h-60 pb-4 rounded-sm mx-auto">
               <img className="mt-4 ml-5" src="/moneyBag.svg" alt="" />
               <h1 className="ml-5 text-xl mt-2 font-semibold">
@@ -73,7 +72,6 @@ const Hero = () => {
               </p>
             </div>
 
-            {/* Card 3 */}
             <div className="w-full lg:w-75 bg-[#f1f1f1] p-2 h-auto min-h-60 pb-4 rounded-sm mx-auto">
               <img className="mt-4 ml-5" src="/speaker.svg" alt="" />
               <h1 className="ml-5 mt-2 text-xl font-semibold">
@@ -85,7 +83,6 @@ const Hero = () => {
               </p>
             </div>
 
-            {/* Card 4 */}
             <div className="w-full lg:w-75 bg-[#f1f1f1] p-2 h-auto min-h-60 pb-4 rounded-sm mx-auto">
               <img className="mt-3 ml-5" src="/globe (1).svg" alt="" />
               <h1 className="ml-5 mt-2 text-xl font-semibold">

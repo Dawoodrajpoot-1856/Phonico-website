@@ -39,14 +39,12 @@ const LoginPage = () => {
       <Header />
       <div className="max-w-[1270px] mx-auto px-4 sm:px-6">
         <div className="flex flex-col md:flex-row items-stretch gap-10 max-w-7xl mx-auto py-6 md:py-10">
-          {/* Banner Section - Exact Match */}
           <div
             className="w-full md:w-1/2 h-[350px] sm:h-[450px] md:h-[650px] rounded-2xl overflow-hidden relative bg-cover bg-center flex flex-col justify-between p-6 sm:p-8 md:p-12 shrink-0 text-center"
             style={{
               backgroundImage: "url('https://phonico.com/images/authImg.png')",
             }}
           >
-            {/* Top Section */}
             <div className="flex flex-col gap-2">
               <h2 className="text-white text-3xl sm:text-4xl md:text-5xl font-bold leading-tight drop-shadow-lg">
                 Welcome to Phonico
@@ -56,7 +54,6 @@ const LoginPage = () => {
               </p>
             </div>
 
-            {/* Bottom Section */}
             <div className="flex flex-col gap-2">
               <p className="text-white text-2xl md:text-3xl font-bold drop-shadow-lg">
                 Seamless Connectivity

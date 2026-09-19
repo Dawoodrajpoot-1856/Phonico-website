@@ -22,8 +22,6 @@ const Page = () => {
 
   const fetchBlogs = async () => {
     try {
-      console.log("Fetching blogs...");
-
       const res = await fetch("https://platform.phonico.com/api/landing/blog", {
         method: "GET",
         headers: {
@@ -33,8 +31,6 @@ const Page = () => {
       });
 
       const data = await res.json();
-
-      console.log(data);
 
       return data;
     } catch (error) {
@@ -54,7 +50,6 @@ const Page = () => {
     getBlogs();
   }, []);
 
-  // 👇 ab sirf slug se navigate hoga — route "blog/[slug]/page.tsx" ke sath match karega
   const handleBlogClick = (slug: string) => {
     if (slug) {
       router.push(`/blog/${slug}`);

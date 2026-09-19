@@ -3,9 +3,7 @@ import React from "react";
 const Connectivity = () => {
   return (
     <>
-      {/* Section 1: Why Choose Phonico */}
       <div className="relative overflow-hidden max-w-[1320px] w-full mx-auto mt-5 flex flex-col md:flex-row items-center justify-between gap-10 p-6 md:p-10">
-        {/* Wavy Blob Background Image - Width Bardi Gai Hai (w-[100%] md:w-[90%] lg:w-[110%]) */}
         <img
           src="https://phonico.com/images/wavyBlobRight.svg"
           alt=""
@@ -20,7 +18,6 @@ const Connectivity = () => {
             </span>
           </h1>
 
-          {/* Paragraph Text Size Barha Dia Gia Hai (text-lg md:text-lg) */}
           <p className="font-medium mt-6 text-lg md:text-lg text-center md:text-left max-w-xl text-slate-600 leading-relaxed">
             When you are in the United States, there should be no complications,
             especially with connectivity. Phonico makes it simple with
@@ -35,8 +32,6 @@ const Connectivity = () => {
             effortlessly.
           </p>
         </div>
-
-        {/* Content Right Side (Benefits Image) */}
         <div className="relative z-10 w-full md:w-1/2 flex justify-center md:justify-end">
           <img
             className="w-full max-w-[280px] sm:max-w-[380px] md:max-w-[450px] object-contain"
@@ -46,16 +41,12 @@ const Connectivity = () => {
         </div>
       </div>
 
-      {/* Section 2: Uninterrupted Connectivity Features */}
       <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 p-6 mt-10 bg-white border border-gray-200 rounded-2xl justify-between items-center mx-4 xl:mx-auto w-auto max-w-[1270px] shadow-2xs">
         <h1 className="font-semibold text-2xl sm:text-3xl text-center lg:text-left lg:max-w-[320px] leading-tight text-gray-900">
           Uninterrupted <br className="hidden lg:block" /> Connectivity{" "}
           <br className="hidden lg:block" /> Across the USA
         </h1>
-
-        {/* Handled beautifully on tablets using grid grid-cols-3 instead of messy flex wraps */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full lg:w-auto lg:flex-1 lg:max-w-[850px] items-center justify-items-center sm:justify-items-start">
-          {/* Feature 1 */}
           <div className="flex flex-row items-center gap-4 w-full justify-center sm:justify-start">
             <img
               src="https://phonico.com/images/Coverage.svg"
@@ -67,7 +58,6 @@ const Connectivity = () => {
             </h2>
           </div>
 
-          {/* Feature 2 */}
           <div className="flex flex-row items-center gap-4 w-full justify-center sm:justify-start">
             <img
               src="https://phonico.com/images/Plans.svg"
@@ -78,8 +68,6 @@ const Connectivity = () => {
               Custom Plans <br /> To Choose
             </h2>
           </div>
-
-          {/* Feature 3 */}
           <div className="flex flex-row items-center gap-4 w-full justify-center sm:justify-start">
             <img
               src="https://phonico.com/images/247Support.svg"
@@ -93,7 +81,6 @@ const Connectivity = () => {
         </div>
       </div>
 
-      {/* Section 3: Introducing App Section (Bottom Image Locked) */}
       <div className="flex flex-col md:flex-row gap-8 mt-10 p-0 bg-gray-50 rounded-3xl mx-4 xl:mx-auto max-w-[1270px] items-center overflow-hidden border border-gray-100">
         <div className="md:w-1/2 flex flex-col items-center md:items-start w-full py-8 md:py-12 md:pl-10 px-6 md:pr-4">
           <h1 className="font-semibold text-3xl sm:text-4xl lg:text-5xl mb-4 text-center md:text-left leading-tight text-gray-900">
@@ -112,7 +99,6 @@ const Connectivity = () => {
             Download the App now
           </p>
 
-          {/* App Store Buttons wrapper */}
           <div className="flex flex-row gap-3 justify-center items-center md:justify-start w-full max-w-[320px] sm:max-w-full">
             <img
               className="w-32 sm:w-36 cursor-pointer hover:opacity-90 transition-opacity duration-200"
@@ -127,7 +113,6 @@ const Connectivity = () => {
           </div>
         </div>
 
-        {/* Right Side: Mockup Image - Locked seamlessly to the bottom row */}
         <div className="md:w-1/2 flex justify-center md:justify-end w-full self-end m-0 p-0 pt-6 md:pt-0">
           <img
             className="w-48 sm:w-64 md:w-80 lg:w-[350px] object-contain block translate-y-2 md:translate-y-4"
@@ -137,7 +122,6 @@ const Connectivity = () => {
         </div>
       </div>
 
-      {/* Trust Badges / Social proof heading */}
       <div className="mt-12 sm:mt-16 text-center px-4 mb-8">
         <p className="font-semibold text-sm sm:text-xl text-slate-600">
           2,157 people have said how good Phonico is

@@ -43,9 +43,7 @@ export default function PlanDetailPage() {
     <>
       <Header />
 
-      {/* Main Wrapper: Fixed width w-[1260px] hata kar max-w-7xl mx-auto kiya */}
       <div className="w-full max-w-7xl mx-auto mt-6 lg:mt-10 mb-10 px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row gap-6 lg:gap-0">
-        {/* Left Side: Card Column */}
         <div className="w-full lg:max-w-[520px] bg-[#f5fcff] rounded-xl lg:rounded-r-none lg:rounded-l-xl hover:shadow-sm transition-all duration-300 border border-pink-100 p-6 flex flex-col justify-between min-h-[480px] lg:min-h-[500px]">
           <div className="text-center mb-6">
             <h1 className="text-4xl font-semibold text-gray-900 mt-4 tracking-tight">
@@ -53,7 +51,6 @@ export default function PlanDetailPage() {
             </h1>
           </div>
 
-          {/* w-[330px] hata kar max-w-[330px] w-full kiya taaki mobile pe crash na ho */}
           <div className="bg-[#5cbfea] w-full max-w-[330px] flex flex-col items-center justify-center h-30 mx-auto rounded p-4 text-center border border-gray-100 mb-6">
             <h2 className="text-3xl font-bold text-gray-900">
               ${currentPlan.price}/mo
@@ -61,7 +58,6 @@ export default function PlanDetailPage() {
             <p className="mt-1 font-medium">{currentPlan.name}</p>
           </div>
 
-          {/* ml-20 hata kar md:ml-20 kiya aur mobile par padding set ki */}
           <div className="flex-grow px-2 md:pl-16 lg:pl-20">
             <div className="space-y-3.5 border-t border-gray-100 pt-4">
               {[
@@ -90,7 +86,6 @@ export default function PlanDetailPage() {
           </div>
         </div>
 
-        {/* Right Side: Details and Checkout */}
         <div className="bg-[#fef7f2] w-full lg:max-w-[750px] p-6 flex flex-col gap-6 rounded-xl lg:rounded-l-none lg:rounded-r-xl border border-orange-100">
           {/* eSIM Compatibility Button: Fixed w-[400px] ko max-w-[400px] w-full kiya */}
           <button className="w-full max-w-[400px] mx-auto p-3 rounded font-bold bg-white hover:text-white hover:bg-[#EE5E7F] text-[#EE5E7F] border-[#fbc4d0] border-2 transition-all text-sm tracking-wide shadow-sm">
@@ -113,7 +108,6 @@ export default function PlanDetailPage() {
             </div>
           </div>
 
-          {/* Pricing & Checkout Summary Box */}
           <div className="bg-white border border-gray-200 rounded-xl p-5 flex flex-col gap-4 shadow-xs">
             <div className="flex flex-row justify-between items-center border-b border-gray-200 pb-3">
               <span className="text-sm font-medium text-gray-700">Monthly</span>
@@ -122,13 +116,11 @@ export default function PlanDetailPage() {
               </span>
             </div>
 
-            {/* Row 2: Subtotal */}
             <div className="flex flex-row font-semibold justify-between items-center border-gray-200 border-b pb-3 text-sm text-gray-800">
               <span className="font-bold">Subtotal</span>
               <span>${currentPlan.price} for 1 month</span>
             </div>
 
-            {/* Add To Cart Button: Fixed w-[600px] hata kar w-full kiya taaki layout na toote */}
             <button
               onClick={handleAddToCart}
               className="w-full mt-2 bg-[#EE5E7F] hover:bg-[#f33f69] active:scale-[0.99] transition-all h-12 rounded text-white font-bold text-sm tracking-wider shadow-md uppercase"

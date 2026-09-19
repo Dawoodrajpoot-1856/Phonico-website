@@ -105,9 +105,7 @@ const BlogDetailPage = () => {
         />
       </div>
 
-      {/* Content */}
       <div className="w-full max-w-[1270px] mx-auto px-4 sm:px-6 mt-8">
-        {/* Author + Date */}
         <div className="flex flex-row items-center gap-3 mt-5">
           <img
             className="w-10 h-10 rounded-full object-cover"
@@ -121,11 +119,9 @@ const BlogDetailPage = () => {
             <p className="text-xs text-gray-400">9 months ago</p>
           </div>
         </div>
-        {/* Title */}
         <h1 className="font-bold text-3xl sm:text-4xl text-gray-900 mt-4 leading-tight">
           {blog.name || "Untitled Blog"}
         </h1>
-        {/* Sub content */}
         {blog.sub_content && (
           <p className="mt-6 text-lg text-gray-800 leading-relaxed">
             As an iPhone user, you know that every year Apple introduces a newer
@@ -178,7 +174,6 @@ const BlogDetailPage = () => {
       </div>
 
       <div className="w-full max-w-[1270px] mx-auto px-4 sm:px-6 mt-12 mb-12">
-        {/* What to do section */}
         <div className="mb-12">
           <h1 className="text-2xl font-semibold text-gray-900 mb-4">
             What should you do if transferring an eSIM doesn’t work?
@@ -211,7 +206,6 @@ const BlogDetailPage = () => {
           </ul>
         </div>
 
-        {/* Troubleshooting section */}
         <div className="mb-12">
           <h1 className="text-2xl font-semibold text-gray-900 mb-4">
             Troubleshooting Tips to Shift your eSIM
@@ -239,7 +233,6 @@ const BlogDetailPage = () => {
           </ul>
         </div>
 
-        {/* Conclusion section */}
         <div className="mb-12">
           <h1 className="text-2xl font-semibold text-gray-900 mb-4">
             Conclusion
@@ -259,10 +252,8 @@ const BlogDetailPage = () => {
       </div>
 
       <div className="w-full max-w-[1270px] mx-auto px-4 sm:px-6 mt-12 mb-12">
-        {/* FAQ Section Title */}
         <h1 className="text-4xl font-bold text-gray-900 mb-10">FAQs</h1>
 
-        {/* FAQ Item 1 */}
         <div className="mb-8">
           <h1 className="text-2xl font-semibold text-gray-900 mb-3">
             Can I transfer an eSIM to another iPhone?
@@ -274,7 +265,6 @@ const BlogDetailPage = () => {
           </p>
         </div>
 
-        {/* FAQ Item 2 */}
         <div className="mb-8">
           <h1 className="text-2xl font-semibold text-gray-900 mb-3">
             How long does transferring an eSIM from one iPhone to another take?
@@ -286,7 +276,6 @@ const BlogDetailPage = () => {
           </p>
         </div>
 
-        {/* FAQ Item 3 */}
         <div className="mb-8">
           <h1 className="text-2xl font-semibold text-gray-900 mb-3">
             Should I erase my eSIM from an old iPhone?
@@ -297,7 +286,6 @@ const BlogDetailPage = () => {
           </p>
         </div>
       </div>
-      {/* White Card — center mein */}
       <div className="w-full flex justify-center mt-10 px-4">
         <div className="bg-white  rounded-2xl border border-gray-100 bg-gray-200 shadow-sm p-8 w-full max-w-2xl text-center">
           <img
@@ -311,8 +299,7 @@ const BlogDetailPage = () => {
           <p className="text-gray-500 text-sm mt-1">Writer at Phonico</p>
         </div>
       </div>
-
-      {/* Related Blogs */}
+      
       {relatedBlogs.length > 0 && (
         <div className="w-full max-w-[1270px] mx-auto px-4 sm:px-6 mt-14 mb-16">
           <h2 className="font-semibold text-2xl mb-6">Related Blogs</h2>

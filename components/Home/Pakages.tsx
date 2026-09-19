@@ -2,13 +2,12 @@
 import React, { useEffect, useState } from "react";
 import { PackageSearch } from "lucide-react";
 import Link from "next/link";
-// Redux hooks aur actions import karein
 import { useAppDispatch } from "@/redux/hooks";
 import { setSelectedPlan } from "@/redux/planSlice";
 
 const Packages = () => {
   const [plans, setPlans] = useState<any[]>([]);
-  const dispatch = useAppDispatch(); // Redux dispatch function initialize karein
+  const dispatch = useAppDispatch();
 
   const fetchPlans = async () => {
     try {
@@ -18,10 +17,8 @@ const Packages = () => {
         cache: "no-store",
       });
       const data = await res.json();
-      console.log("Data plans coming inside component:", data);
       return data;
     } catch (error) {
-      console.error("Failed to fetch plans inside component:", error);
       return null;
     }
   };
@@ -36,13 +33,11 @@ const Packages = () => {
     getPlans();
   }, []);
 
-  // API se aane wale raw objects ko display structure ke sath map karne ke liye helper function
   const handlePlanClick = (index: number) => {
     const rawPlanApiData = plans[index];
     const displayInfo = displayPlans[index];
 
     if (rawPlanApiData) {
-      // Dono structures (API text aur displays info) ko combine karke redux mein bhej rahe hain
       dispatch(
         setSelectedPlan({
           ...rawPlanApiData,
@@ -121,7 +116,6 @@ const Packages = () => {
           <span className="text-[#ec3c65] mt-2 block">Expectations!</span>
         </h1>
 
-        {/* Responsive Grid adjusted for Mobile, Tablet (md), and Desktop (lg) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-12 mt-20 justify-center max-w-[1300px] mx-auto">
           {displayPlans.map((plan, i) => {
             const isFifthCard = i === 4;
@@ -192,7 +186,7 @@ const Packages = () => {
                     <Link
                       href={plan.link}
                       className="w-full block"
-                      onClick={() => handlePlanClick(i)} // Click karne pe data redux state me chala jayega
+                      onClick={() => handlePlanClick(i)}
                     >
                       <button className="w-full bg-[#f34b72] hover:bg-[#f33f69] active:scale-[0.99] transition-all h-10 rounded-lg text-white font-medium text-xs tracking-wider shadow-sm uppercase cursor-pointer">
                         View Plan

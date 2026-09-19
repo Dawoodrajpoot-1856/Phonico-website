@@ -49,9 +49,8 @@ const Header: React.FC = () => {
   );
 
   return (
-    <div className="bg-white sticky top-0 z-50 border-b border-gray-100">
-      <div className="flex flex-row justify-between items-center h-20 px-4 2xl:max-w-7xl mx-auto w-full">
-        {/* Logo */}
+    <div className="bg-white sticky top-0 z-50 border-b border-gray-100 overflow-hidden w-full">
+      <div className="flex flex-row justify-between items-center h-20 2xl:max-w-7xl mx-auto px-4 lg:px-8 w-full">
         <div>
           <Link href="/">
             <img
@@ -62,7 +61,6 @@ const Header: React.FC = () => {
           </Link>
         </div>
 
-        {/* Desktop Menu */}
         <div className="hidden lg:flex flex-row gap-8 lg:gap-10">
           <Link href="/">
             <li className="relative list-none font-semibold text-[#ee5e7f] cursor-pointer after:content-[''] after:absolute after:left-0 after:bottom-[-8px] after:h-[6px] after:w-full after:bg-[#ee5e7f] after:rounded-full">
@@ -81,9 +79,7 @@ const Header: React.FC = () => {
           </Link>
         </div>
 
-        {/* Desktop Actions */}
         <div className="hidden lg:flex items-center gap-4 lg:gap-5">
-          {/* Cart Button */}
           <button
             onClick={() => setIsCartOpen(true)}
             className="relative flex items-center justify-center h-11 w-12 rounded border border-gray-200 hover:bg-gray-50 transition-colors"
@@ -125,7 +121,6 @@ const Header: React.FC = () => {
           )}
         </div>
 
-        {/* Mobile Actions (cart + toggle) */}
         <div className="flex lg:hidden items-center gap-2">
           <button
             onClick={() => setIsCartOpen(true)}
@@ -169,10 +164,8 @@ const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Dropdown */}
       {isOpen && (
         <div className="lg:hidden bg-white border-t border-gray-100 px-4 py-6 flex flex-col gap-2 shadow-xl">
-          {/* Har link mein hover:text-[#ee5e7f] add kar diya hai */}
           <Link
             href="/"
             onClick={() => setIsOpen(false)}
@@ -224,7 +217,6 @@ const Header: React.FC = () => {
         </div>
       )}
 
-      {/* Cart Drawer Overlay */}
       {isCartOpen && (
         <div
           className="fixed inset-0 bg-black/40 z-[60]"
@@ -232,14 +224,11 @@ const Header: React.FC = () => {
         />
       )}
 
-      {/* Cart Drawer (slides from right) */}
-      {/* Cart Drawer Container */}
       <div
         className={`fixed top-20 right-0 h-[calc(100vh-80px)] w-full rounded-2xl sm:w-[400px] bg-white z-[70] shadow-2xl transform transition-transform duration-300 ease-in-out flex flex-col rounded-l-2xl overflow-hidden ${
           isCartOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        {/* Drawer Header */}
         <div className="flex items-center rounded-t-2xl bg-red-200 justify-between px-5 h-16 border-b border-gray-100 flex-shrink-0">
           <h2 className="font-bold text-lg text-gray-800 flex items-center gap-2">
             <ShoppingCart className="w-5 h-5 text-[#ee5e7f]" />
@@ -253,7 +242,6 @@ const Header: React.FC = () => {
           </button>
         </div>
 
-        {/* Scrollable Drawer Body */}
         <div className="flex-1 overflow-y-auto px-5 py-4">
           {!isMounted || cartItems.length === 0 ? (
             <div className="h-full flex flex-col items-center justify-center text-center gap-3">
@@ -311,7 +299,7 @@ const Header: React.FC = () => {
           )}
         </div>
 
-        {/* Sticky Drawer Footer (Button & Subtotal) */}
+        {/* Sticky Drawer Footer */}
         {isMounted && cartItems.length > 0 && (
           <div className="border-t border-gray-100 bg-gray-100 p-5 flex flex-col gap-3 flex-shrink-0">
             <div className="flex justify-between items-center">

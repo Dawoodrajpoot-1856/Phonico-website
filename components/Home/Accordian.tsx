@@ -44,9 +44,7 @@ export default function AccordionPage() {
         </p>
       </div>
 
-      {/* Accordions Main Grid Section */}
       <div className="pb-16">
-        {/* Changed grid activation to md:grid-cols-2 for perfect side-by-side tablet consistency */}
         <div className="max-w-[1330px] mx-auto grid gap-4 md:gap-5 px-4 sm:px-6 lg:px-8 grid-cols-1 md:grid-cols-2">
           {data.map((item, index) => {
             const isOpen = open === index;
@@ -63,7 +61,6 @@ export default function AccordionPage() {
                   className="w-full flex justify-between items-center p-5 md:p-6 font-semibold text-left bg-white text-base sm:text-lg md:text-xl group"
                 >
                   <div className="flex items-center pr-2 min-w-0 w-full">
-                    {/* Number block kept intact but fixed shrink on tablet */}
                     <div
                       className={`flex items-center mr-3 md:mr-4 font-semibold text-base sm:text-lg md:text-xl transition-colors duration-300 shrink-0 ${
                         isOpen ? "text-pink-600" : "text-gray-400"
