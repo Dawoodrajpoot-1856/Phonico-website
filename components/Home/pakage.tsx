@@ -4,7 +4,6 @@ const Package = () => {
   return (
     <div>
       <div className="mt-10 px-4 sm:px-6 lg:px-8">
-        {/* Top Banner: Width 1050px kar di hai taaki baki sections se match kare */}
         <div className="bg-[#fef7f2] p-6 mt-10 rounded-3xl w-full max-w-[1050px] mx-auto min-h-32 sm:h-56 flex items-center justify-center">
           <h1 className="font-semibold text-2xl sm:text-5xl text-center text-slate-900 leading-tight">
             Full Coverage With the Best Prepaid{" "}
@@ -13,7 +12,6 @@ const Package = () => {
           </h1>
         </div>
 
-        {/* Heading Section */}
         <div className="w-full max-w-[1050px] mx-auto mt-12 sm:mt-16">
           <h2 className="font-semibold text-3xl sm:text-5xl text-left text-slate-900 leading-tight">
             You can get your <span className="text-[#f34b72]">Phonico</span>
@@ -22,7 +20,6 @@ const Package = () => {
           </h2>
         </div>
 
-        {/* Steps Container */}
         <div className="w-full max-w-[1050px] mx-auto mt-10 sm:mt-6">
           {/* Mobile/Tablet View (Grid) */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:hidden bg-[#faf5f0]/50 p-6 rounded-2xl border border-orange-50">

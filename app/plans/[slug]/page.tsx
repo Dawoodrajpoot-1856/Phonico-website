@@ -1,15 +1,15 @@
 "use client";
 
 import React from "react";
-import { useParams } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import Footer from "@/components/Home/Footer";
-import Header from "@/components/Home/header";
 import AccordionPage from "@/components/Home/Accordian";
 import { addToCart } from "@/redux/planSlice";
+import StoreProvider from "@/redux/StoreProvider";
 
-export default function PlanDetailPage() {
+function PlanDetailContent() {
   const dispatch = useAppDispatch();
+  const currentPlan = useAppSelector((state) => state.plan.selectedPlan);
 
   const handleAddToCart = () => {
     if (currentPlan) {
@@ -17,15 +17,10 @@ export default function PlanDetailPage() {
       alert("Plan added to cart!");
     }
   };
-  const params = useParams();
-  const slug = params?.slug;
-
-  const currentPlan = useAppSelector((state) => state.plan.selectedPlan);
 
   if (!currentPlan) {
     return (
       <>
-        <Header />
         <div className="flex flex-col items-center justify-center min-h-[60vh] px-4 text-center">
           <h1 className="text-2xl font-bold text-gray-800">
             No Plan Selected!
@@ -41,8 +36,6 @@ export default function PlanDetailPage() {
 
   return (
     <>
-      <Header />
-
       <div className="w-full max-w-7xl mx-auto mt-6 lg:mt-10 mb-10 px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row gap-6 lg:gap-0">
         <div className="w-full lg:max-w-[520px] bg-[#f5fcff] rounded-xl lg:rounded-r-none lg:rounded-l-xl hover:shadow-sm transition-all duration-300 border border-pink-100 p-6 flex flex-col justify-between min-h-[480px] lg:min-h-[500px]">
           <div className="text-center mb-6">
@@ -87,12 +80,10 @@ export default function PlanDetailPage() {
         </div>
 
         <div className="bg-[#fef7f2] w-full lg:max-w-[750px] p-6 flex flex-col gap-6 rounded-xl lg:rounded-l-none lg:rounded-r-xl border border-orange-100">
-          {/* eSIM Compatibility Button: Fixed w-[400px] ko max-w-[400px] w-full kiya */}
           <button className="w-full max-w-[400px] mx-auto p-3 rounded font-bold bg-white hover:text-white hover:bg-[#EE5E7F] text-[#EE5E7F] border-[#fbc4d0] border-2 transition-all text-sm tracking-wide shadow-sm">
             Check if your phone is eSIM compatible
           </button>
 
-          {/* Whats Included Section */}
           <div className="flex flex-col gap-3">
             <h2 className="font-bold text-xl text-gray-900 tracking-tight">
               Whats included
@@ -129,7 +120,6 @@ export default function PlanDetailPage() {
             </button>
           </div>
 
-          {/* Bottom Features Indicators */}
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mx-auto items-center justify-center mt-2">
             <div className="flex flex-row gap-2 items-center">
               <img src="https://phonico.com/images/clipboard.svg" alt="" />
@@ -150,5 +140,13 @@ export default function PlanDetailPage() {
       <AccordionPage />
       <Footer />
     </>
+  );
+}
+
+export default function PlanDetailPage() {
+  return (
+    <StoreProvider>
+      <PlanDetailContent />
+    </StoreProvider>
   );
 }

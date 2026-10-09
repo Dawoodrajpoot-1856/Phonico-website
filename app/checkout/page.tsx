@@ -1,7 +1,6 @@
 "use client";
 import AccordionPage from "@/components/Home/Accordian";
 import Footer from "@/components/Home/Footer";
-import Header from "@/components/Home/header";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { addToCart } from "@/redux/planSlice";
 
@@ -17,11 +16,7 @@ const Page = () => {
 
   return (
     <>
-      <Header />
-
-      {/* Main Container: w-[900px] hata kar w-full max-w-4xl kiya taaki screen size ke mutabiq adjust ho */}
       <div className="w-full max-w-4xl mx-auto bg-[#faf5f0] p-4 sm:p-6 flex flex-col gap-6 my-6 sm:my-10 rounded-lg shadow-xs">
-        {/* Top Header Section: Mobile par flex-col aur center kiya, tablet/desktop par row aur spaced out */}
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-0 justify-between items-center border-b border-orange-100 pb-4 sm:pb-0">
           <img
             src="https://phonico.com/_next/image/?url=%2Fimages%2FsiteLogo.png&w=128&q=75"

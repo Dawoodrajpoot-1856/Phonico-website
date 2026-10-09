@@ -1,18 +1,26 @@
 "use client";
-import { useRef } from "react";
+
+import { startTransition, useEffect, useState } from "react";
 import { Provider } from "react-redux";
 import { makeStore, AppStore } from "./store";
+
+let clientStore: AppStore | undefined;
 
 export default function StoreProvider({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const storeRef = useRef<AppStore | null>(null);
+  const [store, setStore] = useState<AppStore | null>(null);
 
-  if (!storeRef.current) {
-    storeRef.current = makeStore();
-  }
+  useEffect(() => {
+    clientStore ??= makeStore();
+    startTransition(() => {
+      setStore(clientStore!);
+    });
+  }, []);
 
-  return <Provider store={storeRef.current}>{children}</Provider>;
+  if (!store) return null;
+
+  return <Provider store={store}>{children}</Provider>;
 }

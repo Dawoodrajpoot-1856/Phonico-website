@@ -5,7 +5,6 @@ import Footer from "../../components/Home/Footer";
 const Page = () => {
   return (
     <>
-      <Header />
       <div className=" max-w-[1300px] mx-auto min-h-screen">
         <div className="max-w-full mx-auto px-8 py-10">
           <h1 className="text-4xl font-semibold text-center mb-10">

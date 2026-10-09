@@ -36,7 +36,6 @@ const LoginPage = () => {
 
   return (
     <>
-      <Header />
       <div className="max-w-[1270px] mx-auto px-4 sm:px-6">
         <div className="flex flex-col md:flex-row items-stretch gap-10 max-w-7xl mx-auto py-6 md:py-10">
           <div

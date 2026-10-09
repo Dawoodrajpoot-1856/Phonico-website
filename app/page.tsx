@@ -1,4 +1,3 @@
-import { Accordion } from "radix-ui";
 import Connectivity from "../components/Home/connectivity";
 import Footer from "../components/Home/Footer";
 import Header from "../components/Home/header";
@@ -7,13 +6,18 @@ import Pakage from "../components/Home/pakage";
 import Slider from "../components/Home/Slider";
 import AccordionPage from "@/components/Home/Accordian";
 import Packages from "@/components/Home/Pakages";
+import StoreProvider from "@/redux/StoreProvider";
+import { getGuestPlans } from "@/services/plans.services";
 
-const Home = () => {
+const Home = async () => {
+  const plans = await getGuestPlans();
+
   return (
     <div>
-      <Header />
       <Hero />
-      <Packages />
+      <StoreProvider>
+        <Packages initialPlans={plans} />
+      </StoreProvider>
       <Pakage />
       <Connectivity />
       <Slider />

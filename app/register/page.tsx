@@ -4,9 +4,11 @@ import Header from "@/components/Home/header";
 import Footer from "@/components/Home/Footer";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { getOtp } from "@/services/getOtp.services";
+import { registerUser } from "@/services/registerUser.services";
+import { signIn } from "next-auth/react";
 
 const RegisterPage = () => {
-  const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -14,51 +16,85 @@ const RegisterPage = () => {
     otp: "",
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [isOtpSent, setIsOtpSent] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [isAlreadyRegistered, setIsAlreadyRegistered] = useState(false);
   const router = useRouter();
 
-  const apiCall = async (endpoint: string, body: any) => {
+  const handleSendOtp = async () => {
+    if (!formData.email) {
+      setErrorMessage("Please enter your email first.");
+      return;
+    }
     setIsLoading(true);
     setErrorMessage("");
+    setIsAlreadyRegistered(false);
+
     try {
-      const res = await fetch(endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Failed");
-      return data;
+      await getOtp(formData.email);
+      setIsOtpSent(true);
     } catch (err: any) {
-      setErrorMessage(err.message);
-      throw err;
+      let msg = err?.message || "";
+      if (msg === "T" || msg.length <= 2) {
+        msg = "Account already registered or invalid email!";
+      }
+      setErrorMessage(msg);
+
+      if (
+        msg.toLowerCase().includes("already") ||
+        msg.toLowerCase().includes("exist") ||
+        msg.includes("T")
+      ) {
+        setIsAlreadyRegistered(true);
+      }
     } finally {
       setIsLoading(false);
     }
   };
 
-  const handleSendOtp = async (e: React.FormEvent) => {
-    e.preventDefault();
-    await apiCall("/api/auth/send-otp", { email: formData.email });
-    setStep(2);
-  };
-  const handleVerifyOtp = async (e: React.FormEvent) => {
-    e.preventDefault();
-    await apiCall("/api/auth/verify-otp", {
-      email: formData.email,
-      otp: formData.otp,
-    });
-    setStep(3);
-  };
   const handleFinalRegister = async (e: React.FormEvent) => {
     e.preventDefault();
-    await apiCall("/api/auth/register", formData);
-    router.push("/login");
+    setIsLoading(true);
+    setErrorMessage("");
+
+    if (!formData.otp || formData.otp.trim().length < 4) {
+      setErrorMessage("Please enter a valid 4-digit OTP.");
+      setIsLoading(false);
+      return;
+    }
+
+    try {
+      console.log("Submitting final registration with:", formData);
+
+      await registerUser(formData);
+
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
+      const result = await signIn("credentials", {
+        email: formData.email,
+        password: formData.password,
+        redirect: false,
+      });
+
+      if (result?.error) {
+        setErrorMessage("Auto-login failed. Please login manually.");
+        router.push("/login");
+      } else {
+        router.push("/");
+      }
+    } catch (err: any) {
+      let msg = err?.message || "Registration failed";
+      if (msg === "T" || msg.length <= 2) {
+        msg = "Registration failed. Please check your details or try again.";
+      }
+      setErrorMessage(msg);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
     <>
-      <Header />
       <div className="max-w-[1270px] mx-auto px-4 py-10">
         <div className="flex flex-col md:flex-row items-stretch gap-10 max-w-7xl mx-auto">
           <div
@@ -97,92 +133,101 @@ const RegisterPage = () => {
               </p>
             </div>
 
-            {step === 1 && (
-              <div className="flex bg-gray-100 p-1 rounded-lg max-w-[550px]">
-                <Link href="/login" className="flex-1">
-                  <button className="w-full py-3 text-gray-500 font-semibold">
-                    Login
-                  </button>
-                </Link>
-                <button className="flex-1 bg-[#ee5e7f] text-white py-3 rounded shadow font-bold">
-                  Register
+            <div className="flex bg-gray-100 p-1 rounded-lg max-w-[550px]">
+              <Link href="/login" className="flex-1">
+                <button className="w-full py-3 text-gray-500 font-semibold">
+                  Login
                 </button>
-              </div>
-            )}
+              </Link>
+              <button className="flex-1 bg-[#ee5e7f] text-white py-3 rounded shadow font-bold">
+                Register
+              </button>
+            </div>
 
             {errorMessage && (
-              <div className="p-3 bg-red-100 text-red-700 rounded-lg">
-                {errorMessage}
+              <div className="p-4 bg-red-100 text-red-700 rounded-lg max-w-[550px] flex flex-col gap-3">
+                <span>{errorMessage}</span>
+                {isAlreadyRegistered && (
+                  <Link href="/login">
+                    <button className="bg-[#ee5e7f] text-white px-4 py-2 rounded-lg font-bold text-sm w-full hover:bg-[#d64e6d] transition">
+                      Go to Login Page
+                    </button>
+                  </Link>
+                )}
               </div>
             )}
 
             <form
-              onSubmit={
-                step === 1
-                  ? handleSendOtp
-                  : step === 2
-                    ? handleVerifyOtp
-                    : handleFinalRegister
-              }
+              onSubmit={handleFinalRegister}
               className="flex flex-col gap-4 w-full max-w-[550px]"
             >
-              {step === 1 && (
-                <input
-                  type="email"
-                  required
-                  placeholder="Enter your email"
-                  className="border border-gray-300 p-3 rounded-lg w-full"
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
-                />
+              <input
+                type="email"
+                required
+                placeholder="Enter your email"
+                value={formData.email}
+                disabled={isOtpSent}
+                className="border border-gray-300 p-3 rounded-lg w-full disabled:bg-gray-100"
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
+              />
+
+              {!isOtpSent && (
+                <button
+                  type="button"
+                  onClick={handleSendOtp}
+                  disabled={isLoading}
+                  className="bg-[#ee5e7f] text-white border border-[#ee5e7f] hover:bg-[#d64e6d] py-3 rounded-lg font-bold transition disabled:opacity-50"
+                >
+                  {isLoading ? "Sending..." : "Send OTP"}
+                </button>
               )}
-              {step === 2 && (
-                <input
-                  type="text"
-                  required
-                  placeholder="Enter 6-digit OTP"
-                  className="border p-3 rounded-lg w-full"
-                  onChange={(e) =>
-                    setFormData({ ...formData, otp: e.target.value })
-                  }
-                />
-              )}
-              {step === 3 && (
+
+              {isOtpSent && (
                 <>
                   <input
                     type="text"
                     required
+                    placeholder="Enter 4-digit OTP"
+                    value={formData.otp}
+                    className="border border-gray-300 p-3 rounded-lg w-full"
+                    onChange={(e) =>
+                      setFormData({ ...formData, otp: e.target.value })
+                    }
+                  />
+
+                  <input
+                    type="text"
+                    required
                     placeholder="Full Name"
-                    className="border p-3 rounded-lg w-full"
+                    value={formData.name}
+                    className="border border-gray-300 p-3 rounded-lg w-full"
                     onChange={(e) =>
                       setFormData({ ...formData, name: e.target.value })
                     }
                   />
+
                   <input
                     type="password"
                     required
                     placeholder="Password"
-                    className="border p-3 rounded-lg w-full"
+                    value={formData.password}
+                    className="border border-gray-300 p-3 rounded-lg w-full"
                     onChange={(e) =>
                       setFormData({ ...formData, password: e.target.value })
                     }
                   />
+
+                  <button
+                    disabled={isLoading}
+                    type="submit"
+                    className="bg-[#ee5e7f] text-white border border-[#ee5e7f] hover:bg-[#d64e6d] py-3 rounded-lg font-bold transition disabled:opacity-50"
+                  >
+                    {isLoading ? "Processing..." : "Register Now"}
+                  </button>
                 </>
               )}
-
-              <button
-                disabled={isLoading}
-                className="hover:Lbg-[#ee5e7f] text-pink-300 border-pink-400 border hover:text-white py-3 rounded-lg font-bold hover:bg-[#d64e6d] transition"
-              >
-                {isLoading
-                  ? "Processing..."
-                  : step === 1
-                    ? "Send OTP"
-                    : step === 2
-                      ? "Verify OTP"
-                      : "Register Now"}
-              </button>
             </form>
           </div>
         </div>

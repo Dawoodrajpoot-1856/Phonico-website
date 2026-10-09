@@ -5,8 +5,6 @@ import Footer from "../../components/Home/Footer";
 const page = () => {
   return (
     <>
-      <Header />
-
       <div className="bg-[#fff4eeb1] mx-auto  max-w-[1270px]  p-2">
         <div className=" px-4 max-w-[1270px] sm:px-6  mt-10 text-center lg:text-left">
           <h1 className=" font-medium text-4xl  sm:text-4xl lg:text-[40px]">
@@ -99,5 +97,3 @@ const page = () => {
 };
 
 export default page;
-
-

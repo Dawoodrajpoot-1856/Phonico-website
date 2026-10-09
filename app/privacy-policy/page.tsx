@@ -41,9 +41,7 @@ const Page = () => {
   return (
     <>
       {" "}
-      <Header />
       <div className=" max-w-[1300px] mx-auto min-h-screen">
-        {/* max-w-5xl ko badal kar max-w-full kiya hai taake 1300px width use ho */}
         <main className="max-w-full px-6 md:px-10 py-10 space-y-10">
           {sections.map((section, idx) => (
             <section key={idx} className="space-y-4">

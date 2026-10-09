@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { startTransition, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 
@@ -65,10 +65,58 @@ const reviews = [
   },
 ];
 
+function ReviewCard({ item }: { item: (typeof reviews)[number] }) {
+  return (
+    <div className="bg-white border border-gray-100 p-6 md:p-7 rounded-2xl h-full flex flex-col justify-between shadow-2xs hover:shadow-xs transition-shadow duration-300">
+      <div>
+        <div className="flex gap-1 mb-4 md:mb-5">
+          {Array.from({ length: item.rating }).map((_, index) => (
+            <span key={index} className="text-yellow-400 text-lg">
+              ★
+            </span>
+          ))}
+        </div>
+
+        <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3">
+          {item.title}
+        </h3>
+
+        <p className="text-sm md:text-base text-gray-600 leading-relaxed mb-6 md:mb-8">
+          "{item.review}"
+        </p>
+      </div>
+
+      <div className="pt-4 md:pt-5 border-t border-gray-50 flex items-center gap-4 mt-auto">
+        <img
+          src={item.image}
+          alt={item.name}
+          className="w-12 h-12 md:w-14 md:h-14 rounded-full object-cover border border-gray-100 shrink-0"
+        />
+
+        <div className="min-w-0">
+          <h4 className="font-semibold text-sm md:text-base text-gray-900 truncate">
+            {item.name}
+          </h4>
+          <p className="text-xs md:text-sm text-gray-500 truncate">
+            {item.role}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function ReviewsCarousel() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    startTransition(() => {
+      setMounted(true);
+    });
+  }, []);
+
   return (
     <section className="relative py-12 md:py-20 lg:py-24 overflow-hidden">
-      {/* Background Image - Tablet responsive boundaries added */}
       <div
         className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[320px] md:h-[380px] lg:h-[420px] max-w-[90%] md:max-w-[650px] lg:max-w-[700px] mx-auto bg-center bg-cover bg-no-repeat pointer-events-none hidden sm:block opacity-40 md:opacity-100 z-0"
         style={{
@@ -77,29 +125,29 @@ export default function ReviewsCarousel() {
       />
 
       <div className="relative z-10 max-w-[1330px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Slider Container */}
-        <Swiper
-          modules={[Pagination, Autoplay]}
-          slidesPerView={1}
-          loop
-          speed={900}
-          grabCursor
-          spaceBetween={20}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true,
-          }}
-          pagination={{
-            clickable: true,
-            dynamicBullets: true,
-          }}
-          breakpoints={{
-            640: { slidesPerView: 1 },
-            768: { slidesPerView: 2, spaceBetween: 24 }, // Balanced grid flow for tablets
-            1200: { slidesPerView: 3, spaceBetween: 24 },
-          }}
-          className="pb-[80px] md:pb-[90px] relative
+        {mounted ? (
+          <Swiper
+            modules={[Pagination, Autoplay]}
+            slidesPerView={1}
+            loop
+            speed={900}
+            grabCursor
+            spaceBetween={20}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            pagination={{
+              clickable: true,
+              dynamicBullets: true,
+            }}
+            breakpoints={{
+              640: { slidesPerView: 1 },
+              768: { slidesPerView: 2, spaceBetween: 24 },
+              1200: { slidesPerView: 3, spaceBetween: 24 },
+            }}
+            className="pb-[80px] md:pb-[90px] relative
         [&_.swiper-slide]:h-auto 
         [&_.swiper-pagination]:bottom-[5px]
         [&_.swiper-pagination-bullet]:w-[9px] 
@@ -112,49 +160,31 @@ export default function ReviewsCarousel() {
         [&_.swiper-pagination-bullet-active]:rounded-full 
         [&_.swiper-pagination-bullet-active]:bg-[#2563eb] 
         [&_.swiper-pagination-bullet-active]:opacity-100"
-        >
-          {reviews.map((item) => (
-            <SwiperSlide key={item.id} className="pb-6 pt-2 h-full">
-              <div className="bg-white border border-gray-100 p-6 md:p-7 rounded-2xl h-full flex flex-col justify-between shadow-2xs hover:shadow-xs transition-shadow duration-300">
-                <div>
-                  {/* Stars */}
-                  <div className="flex gap-1 mb-4 md:mb-5">
-                    {Array.from({ length: item.rating }).map((_, index) => (
-                      <span key={index} className="text-yellow-400 text-lg">
-                        ★
-                      </span>
-                    ))}
-                  </div>
-
-                  <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 md:mb-3">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-sm md:text-base text-gray-600 leading-relaxed mb-6 md:mb-8">
-                    "{item.review}"
-                  </p>
-                </div>
-
-                <div className="pt-4 md:pt-5 border-t border-gray-50 flex items-center gap-4 mt-auto">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-12 h-12 md:w-14 md:h-14 rounded-full object-cover border border-gray-100 shrink-0"
-                  />
-
-                  <div className="min-w-0">
-                    <h4 className="font-semibold text-sm md:text-base text-gray-900 truncate">
-                      {item.name}
-                    </h4>
-                    <p className="text-xs md:text-sm text-gray-500 truncate">
-                      {item.role}
-                    </p>
-                  </div>
-                </div>
+          >
+            {reviews.map((item) => (
+              <SwiperSlide key={item.id} className="pb-6 pt-2 h-full">
+                <ReviewCard item={item} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 min-[1200px]:grid-cols-3 gap-5 md:gap-6 pb-[80px] md:pb-[90px]">
+            {reviews.slice(0, 3).map((item, index) => (
+              <div
+                key={item.id}
+                className={`pb-6 pt-2 ${
+                  index === 1
+                    ? "hidden md:block"
+                    : index === 2
+                      ? "hidden min-[1200px]:block"
+                      : ""
+                }`}
+              >
+                <ReviewCard item={item} />
               </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

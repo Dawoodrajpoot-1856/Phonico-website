@@ -13,7 +13,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         if (!credentials?.email || !credentials?.password) return null;
 
         try {
-          // Aapki custom backend API url env se aayegi
           const res = await fetch(
             `${process.env.NEXT_PUBLIC_API_URL}/api/login`,
             {
@@ -28,7 +27,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
           const user = await res.json();
 
-          // Agar backend se success response aur user data mil jata hai
           if (res.ok && user) {
             return user;
           }

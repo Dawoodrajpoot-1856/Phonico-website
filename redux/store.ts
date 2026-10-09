@@ -4,7 +4,7 @@ import planReducer from "./planSlice";
 export const makeStore = () => {
   return configureStore({
     reducer: {
-      plan: planReducer, // Yeh state key 'plan' banta hai jisse data access hoga
+      plan: planReducer,
     },
   });
 };

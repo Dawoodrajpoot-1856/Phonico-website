@@ -50,12 +50,12 @@ const Header: React.FC = () => {
 
   return (
     <div className="bg-white sticky top-0 z-50 border-b border-gray-100 overflow-hidden w-full">
-      <div className="flex flex-row justify-between items-center h-20 2xl:max-w-7xl mx-auto px-4 lg:px-8 w-full">
+      <div className="flex flex-row justify-between items-center h-20 2xl:max-w-[1330px] mx-auto px-4 lg:px-8 w-full">
         <div>
           <Link href="/">
             <img
               className="h-18 w-20 object-contain"
-              src="https://phonico-website.vercel.app/_next/image?url=%2FsiteLogo.png&w=256&q=75"
+              src="/favicon.ico"
               alt="Logo"
             />
           </Link>
@@ -98,7 +98,7 @@ const Header: React.FC = () => {
             </button>
           </Link>
 
-          {session ? (
+          {isMounted && session ? (
             <button
               onClick={handleLogout}
               className="flex items-center justify-center gap-2 font-bold text-[#ee5e7f] p-2 h-11 px-5 bg-white border border-gray-200 hover:bg-gray-50 rounded text-sm transition-colors"
@@ -189,7 +189,7 @@ const Header: React.FC = () => {
           </Link>
 
           <div className="mt-4">
-            {session ? (
+            {isMounted && session ? (
               <button
                 onClick={() => {
                   handleLogout();
@@ -217,6 +217,7 @@ const Header: React.FC = () => {
         </div>
       )}
 
+      {/* Cart Drawer code stays same */}
       {isCartOpen && (
         <div
           className="fixed inset-0 bg-black/40 z-[60]"
@@ -299,7 +300,6 @@ const Header: React.FC = () => {
           )}
         </div>
 
-        {/* Sticky Drawer Footer */}
         {isMounted && cartItems.length > 0 && (
           <div className="border-t border-gray-100 bg-gray-100 p-5 flex flex-col gap-3 flex-shrink-0">
             <div className="flex justify-between items-center">

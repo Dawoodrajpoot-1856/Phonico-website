@@ -14,7 +14,6 @@ const Page = () => {
     setIsLoading(true);
 
     try {
-      // Your API call to /user/send-password-reset-email would go here
       console.log("Sending reset email to:", email);
 
       // Simulating API success
@@ -29,7 +28,6 @@ const Page = () => {
 
   return (
     <div>
-      <Header />
       <div className="max-w-[1270px] mx-auto px-4 sm:px-6">
         <div className="flex flex-col lg:flex-row items-stretch gap-10 py-10">
           {/* Left Side: Banner Visual */}
