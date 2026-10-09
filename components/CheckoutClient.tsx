@@ -4,7 +4,7 @@ import Footer from "@/components/Home/Footer";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { addToCart } from "@/redux/planSlice";
 
-const CheckoutClient = () => {
+export default function CheckoutClient() {
   const dispatch = useAppDispatch();
   const currentPlan = useAppSelector((state) => state.plan.selectedPlan);
 
@@ -90,6 +90,4 @@ const CheckoutClient = () => {
       <Footer />
     </>
   );
-};
-
-export default CheckoutClient;
+}

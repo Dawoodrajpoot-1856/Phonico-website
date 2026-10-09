@@ -25,7 +25,6 @@ export default function RootLayout({
 
         <Provider>
           <StoreProvider>
-            {/* Header aur children dono ko StoreProvider ke andar hona chahiye */}
             <Header />
             {children}
           </StoreProvider>
