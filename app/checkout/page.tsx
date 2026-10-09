@@ -4,15 +4,16 @@ import Footer from "@/components/Home/Footer";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { addToCart } from "@/redux/planSlice";
 
-const Page = () => {
+export default function Page() {
   const dispatch = useAppDispatch();
+  const currentPlan = useAppSelector((state) => state.plan.selectedPlan);
+
   const handleAddToCart = () => {
     if (currentPlan) {
       dispatch(addToCart(currentPlan));
-      alert("Plan added to cart!"); // Testing ke liye alert, aap toast bhi laga sakte hain
+      alert("Plan added to cart!");
     }
   };
-  const currentPlan = useAppSelector((state) => state.plan.selectedPlan);
 
   return (
     <>
@@ -67,7 +68,6 @@ const Page = () => {
             <h1 className="font-bold text-gray-900">${currentPlan?.price}</h1>
           </div>
 
-          {/* Subtotal border and alignment fix */}
           <div className="flex justify-between items-center pt-3 mt-1 border-t-2 border-dashed border-orange-100">
             <h1 className="font-bold text-gray-800 text-base sm:text-lg">
               Subtotal
@@ -78,8 +78,10 @@ const Page = () => {
           </div>
         </div>
 
-        {/* Pay Button: Fixed w-[850px] hata kar container ke mutabiq auto-adjust (w-full) kiya */}
-        <button className="w-full p-3 rounded-xl font-bold bg-white hover:text-white hover:bg-[#EE5E7F] text-[#EE5E7F] border-[#fbc4d0] border-2 transition-all text-sm tracking-wide shadow-sm uppercase">
+        <button
+          onClick={handleAddToCart}
+          className="w-full p-3 rounded-xl font-bold bg-white hover:text-white hover:bg-[#EE5E7F] text-[#EE5E7F] border-[#fbc4d0] border-2 transition-all text-sm tracking-wide shadow-sm uppercase cursor-pointer"
+        >
           Pay now
         </button>
       </div>
@@ -88,6 +90,4 @@ const Page = () => {
       <Footer />
     </>
   );
-};
-
-export default Page;
+}
