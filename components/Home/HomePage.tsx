@@ -1,6 +1,6 @@
 import AccordionPage from "@/components/Home/Accordian";
 import Packages from "@/components/Home/Pakages";
-import PackagesSkeleton from "@/components/Home/PakagesSekelton";
+import PackagesSkeleton from "@/components/Sekeltons/PakagesSekelton";
 import Hero from "./hero";
 import Package from "./pakage";
 import Connectivity from "./connectivity";

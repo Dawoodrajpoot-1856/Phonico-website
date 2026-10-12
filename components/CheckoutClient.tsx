@@ -1,6 +1,5 @@
 "use client";
-import AccordionPage from "@/components/Home/Accordian";
-import Footer from "@/components/Home/Footer";
+
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { addToCart } from "@/redux/planSlice";
 
@@ -37,7 +36,6 @@ export default function CheckoutClient() {
           </h1>
         </div>
 
-        {/* Inputs Section */}
         <div className="flex flex-col gap-4">
           <input
             className="bg-white p-3 rounded-xl w-full border border-gray-300 focus:outline-none focus:border-[#EE5E7F] transition-colors text-sm sm:text-base"
@@ -51,7 +49,6 @@ export default function CheckoutClient() {
           />
         </div>
 
-        {/* Pricing Breakdown */}
         <div className="flex flex-col gap-3 bg-white border border-gray-200 p-4 rounded-xl shadow-2xs">
           <div className="flex justify-between border-b border-gray-100 pb-2 items-center text-sm sm:text-base">
             <h1 className="font-semibold text-gray-700">Discount</h1>
@@ -85,9 +82,6 @@ export default function CheckoutClient() {
           Pay now
         </button>
       </div>
-
-      <AccordionPage />
-      <Footer />
     </>
   );
 }

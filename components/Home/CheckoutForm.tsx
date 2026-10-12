@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { addToCart } from "@/redux/planSlice";
-import CheckoutSkeleton from "./CheckoutSkeleton"; // Apne path ke mutabiq adjust karlein
+import CheckoutSkeleton from "@/components/Sekeltons/CheckoutSkeleton";
 
 export default function CheckoutForm() {
   const [isMounted, setIsMounted] = useState(false);
@@ -14,7 +14,6 @@ export default function CheckoutForm() {
     setIsMounted(true);
   }, []);
 
-  // Jab tak component mount na ho, skeleton dikhayein taake hydration error ya blank screen na aaye
   if (!isMounted) {
     return <CheckoutSkeleton />;
   }
@@ -47,7 +46,6 @@ export default function CheckoutForm() {
         </h1>
       </div>
 
-      {/* Inputs Section */}
       <div className="flex flex-col gap-4">
         <input
           className="bg-white p-3 rounded-xl w-full border border-gray-300 focus:outline-none focus:border-[#EE5E7F] transition-colors text-sm sm:text-base"
@@ -61,7 +59,6 @@ export default function CheckoutForm() {
         />
       </div>
 
-      {/* Pricing Breakdown */}
       <div className="flex flex-col gap-3 bg-white border border-gray-200 p-4 rounded-xl shadow-2xs">
         <div className="flex justify-between border-b border-gray-100 pb-2 items-center text-sm sm:text-base">
           <h1 className="font-semibold text-gray-700">Discount</h1>

@@ -17,13 +17,10 @@ export default function PackagesSkeleton() {
           >
             <div className="w-full bg-white rounded-xl shadow-sm p-5 pt-28 flex flex-col justify-between border border-gray-100 min-h-[520px] h-full relative overflow-hidden max-w-[290px]">
               <div>
-                {/* Title Skeleton */}
                 <div className="absolute top-6 left-6 right-6 h-8 bg-gray-200 rounded-md"></div>
 
-                {/* Price & Description Badge Skeleton */}
                 <div className="absolute left-[-12px] right-[-12px] top-[72px] h-16 bg-gray-200 rounded-md px-4 py-3"></div>
 
-                {/* Plan Name & Details Skeleton */}
                 <div className="mt-12 space-y-3">
                   <div className="h-5 bg-gray-200 rounded w-3/4 mx-auto"></div>
                   <div className="space-y-2">
@@ -32,7 +29,6 @@ export default function PackagesSkeleton() {
                   </div>
                 </div>
 
-                {/* Features List Skeleton */}
                 <div className="mt-5 space-y-3 border-t border-gray-100 pt-3.5">
                   {[1, 2, 3, 4, 5].map((idx) => (
                     <div key={idx} className="flex items-center gap-2">
@@ -43,7 +39,6 @@ export default function PackagesSkeleton() {
                 </div>
               </div>
 
-              {/* Button Skeleton */}
               <div className="mt-6 w-full">
                 <div className="w-full bg-gray-200 h-10 rounded-lg"></div>
               </div>
