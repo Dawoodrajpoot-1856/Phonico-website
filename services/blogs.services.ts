@@ -1,16 +1,10 @@
+import { apiClient } from "@/lib/apiClient";
+
 export async function getBlogs() {
   "use cache";
 
   try {
-    const res = await fetch("https://platform.phonico.com/api/landing/blog", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await res.json();
-    if (!res.ok) throw new Error("Failed to fetch blogs");
-
+    const data: any = await apiClient("/landing/blog");
     return data.data || data;
   } catch (error) {
     console.error("Failed to fetch blogs:", error);

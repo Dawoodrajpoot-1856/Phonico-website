@@ -11,8 +11,6 @@ export async function registerUser(formData: {
     otp: formData.otp,
   };
 
-  console.log("=== FINAL PAYLOAD GOING TO SERVER ===", JSON.stringify(payload));
-
   const res = await fetch("https://platform.phonico.com/api/register", {
     method: "POST",
     headers: {
@@ -23,7 +21,6 @@ export async function registerUser(formData: {
   });
 
   const data = await res.json();
-  console.log("=== SERVER RESPONSE DATA ===", data);
 
   if (!res.ok) {
     throw new Error(

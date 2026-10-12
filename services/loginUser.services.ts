@@ -13,8 +13,6 @@ export async function loginUser(credentials: {
     });
 
     const data = await res.json();
-    console.log("Backend Response:", data);
-    console.log("Response Status:", res.status);
 
     if (!res.ok || data.status === false) {
       throw new Error(data.message || data.error || "Login failed");

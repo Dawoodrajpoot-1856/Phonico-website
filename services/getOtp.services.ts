@@ -12,7 +12,6 @@ export async function getOtp(email: string) {
     });
 
     const data = await res.json();
-    console.log("Full Server Response:", data);
 
     if (!res.ok || data.status === false || data.success === false) {
       let errorMessage = data.message || "Failed to send OTP";
