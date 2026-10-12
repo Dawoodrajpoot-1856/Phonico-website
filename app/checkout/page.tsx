@@ -1,16 +1,18 @@
-import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
+import { Suspense } from "react";
+import AccordionPage from "@/components/Home/Accordian";
+import Footer from "@/components/Home/Footer";
 import CheckoutClient from "@/components/CheckoutClient";
-import { authOptions } from "../api/auth/[...nextauth]/authOptions";
+import CheckoutSkeleton from "@/components/Home/CheckoutSkeleton";
 
-export const instant = false;
+export default function CheckoutPage() {
+  return (
+    <>
+      <Suspense fallback={<CheckoutSkeleton />}>
+        <CheckoutClient />
+      </Suspense>
 
-export default async function Page() {
-  const session = await getServerSession(authOptions);
-
-  if (!session) {
-    redirect("/login?callbackUrl=/checkout");
-  }
-
-  return <CheckoutClient />;
+      <AccordionPage />
+      <Footer />
+    </>
+  );
 }

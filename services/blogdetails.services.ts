@@ -3,7 +3,6 @@ export async function getBlogsData() {
     const res = await fetch("https://platform.phonico.com/api/landing/blog", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
-      next: { revalidate: 3600 }, // Caching / Revalidation ke liye
     });
 
     const data = await res.json();
@@ -15,3 +14,6 @@ export async function getBlogsData() {
     return [];
   }
 }
+
+
+// api client 

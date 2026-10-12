@@ -1,7 +1,5 @@
-import HomeClient from "./HomeClient";
-
-export const instant = false;
+import HomePage from "@/components/Home/HomePage";
 
 export default function Page() {
-  return <HomeClient />;
+  return <HomePage />;
 }
