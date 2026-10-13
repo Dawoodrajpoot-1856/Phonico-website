@@ -22,27 +22,45 @@ export async function apiClient<T>(
     ...headers,
   };
 
+  let res: Response;
+
   try {
-    const res = await fetch(url, {
+    res = await fetch(url, {
       ...customOptions,
       headers: defaultHeaders,
     });
+  } catch (error: any) {
+    const cause = error?.cause;
+    console.error(
+      "apiClient network error:",
+      url,
+      cause?.code,
+      cause?.message || error?.message,
+    );
+    throw new Error(
+      cause?.code
+        ? `Network error (${cause.code}): ${cause.message || ""}`
+        : error?.message || "Network request failed",
+    );
+  }
 
-    const data = await res.json();
+  let data: any;
+  try {
+    data = await res.json();
+  } catch {
+    throw new Error(`Invalid response from server (status ${res.status})`);
+  }
 
-    if (!res.ok || data.status === false || data.success === false) {
-      let errorMessage = data.message || data.error || "Something went wrong";
+  if (!res.ok || data.status === false || data.success === false) {
+    let errorMessage = data.message || data.error || "Something went wrong";
 
-      if (data.errors) {
-        const firstErrorKey = Object.keys(data.errors)[0];
-        errorMessage = data.errors[firstErrorKey][0];
-      }
-
-      throw new Error(errorMessage);
+    if (data.errors) {
+      const firstErrorKey = Object.keys(data.errors)[0];
+      errorMessage = data.errors[firstErrorKey][0];
     }
 
-    return data;
-  } catch (error: any) {
-    throw new Error(error.message || "Network request failed");
+    throw new Error(errorMessage);
   }
+
+  return data as T;
 }

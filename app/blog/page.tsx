@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import Footer from "@/components/Home/Footer";
 import { getBlogs } from "@/services/blogs.services";
-import BlogsClient from "@/components/BlogClient";
+import BlogsClient from "@/components/apiData/BlogClient";
 
 async function BlogsSection() {
   const blogs = await getBlogs();

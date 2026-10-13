@@ -14,6 +14,7 @@ import {
 import { useAppSelector, useAppDispatch } from "@/redux/hooks";
 import { removeFromCart } from "@/redux/planSlice";
 import { signOut, useSession } from "next-auth/react";
+import MobileMenu from "./MobileMenu"; // <-- Mobile menu imported here
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -164,60 +165,16 @@ const Header: React.FC = () => {
         </div>
       </div>
 
-      {isOpen && (
-        <div className="lg:hidden bg-white border-t border-gray-100 px-4 py-6 flex flex-col gap-2 shadow-xl">
-          <Link
-            href="/"
-            onClick={() => setIsOpen(false)}
-            className="py-3 font-bold text-center border-b border-gray-100 hover:text-[#ee5e7f] hover:bg-gray-50 transition-colors"
-          >
-            Home
-          </Link>
-          <Link
-            href="/plans"
-            onClick={() => setIsOpen(false)}
-            className="py-3 font-bold text-center border-b border-gray-100 hover:text-[#ee5e7f] hover:bg-gray-50 transition-colors"
-          >
-            Plans
-          </Link>
-          <Link
-            href="/blog"
-            onClick={() => setIsOpen(false)}
-            className="py-3 font-bold text-center border-b border-gray-100 hover:text-[#ee5e7f] hover:bg-gray-50 transition-colors"
-          >
-            Blog
-          </Link>
+      {/* Rendered separated MobileMenu component */}
+      <MobileMenu
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        isMounted={isMounted}
+        session={session}
+        handleLogout={handleLogout}
+      />
 
-          <div className="mt-4">
-            {isMounted && session ? (
-              <button
-                onClick={() => {
-                  handleLogout();
-                  setIsOpen(false);
-                }}
-                className="font-bold rounded-lg p-3 w-full border border-[#ee5e7f] text-[#ee5e7f] flex items-center justify-center gap-2 hover:bg-[#ee5e7f] hover:text-white transition-all"
-              >
-                <LogOut className="w-4 h-4" /> Logout
-              </button>
-            ) : (
-              <div className="grid grid-cols-2 gap-3">
-                <Link href="/login" onClick={() => setIsOpen(false)}>
-                  <button className="font-bold rounded-lg p-3 text-gray-800 w-full bg-gray-100 hover:bg-gray-200 transition-colors">
-                    Login
-                  </button>
-                </Link>
-                <Link href="/register" onClick={() => setIsOpen(false)}>
-                  <button className="font-bold rounded-lg p-3 text-white w-full bg-[#ee5e7f] hover:bg-[#d64f6e] transition-colors">
-                    Sign Up
-                  </button>
-                </Link>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
-
-      {/* Cart Drawer code stays same */}
+      {/* Cart Drawer */}
       {isCartOpen && (
         <div
           className="fixed inset-0 bg-black/40 z-[60]"

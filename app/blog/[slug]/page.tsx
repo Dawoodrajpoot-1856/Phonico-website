@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { getBlogs } from "@/services/blogs.services";
-import BlogDetailContent from "@/components/BlogDetails";
+import BlogDetailContent from "@/components/apiData/BlogDetails";
 
 interface PageProps {
   params: Promise<{ slug: string }>;

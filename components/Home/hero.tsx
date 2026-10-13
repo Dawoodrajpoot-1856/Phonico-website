@@ -30,7 +30,7 @@ const Hero = () => {
             </p>
 
             <Link href="/plans">
-              <button className="p-3 font-bold w-full sm:w-auto lg:w-70 mt-6 transition-colors duration-200 bg-[#f5577c] hover:bg-[#d83b60] rounded text-white shadow-sm cursor-pointer">
+              <button className="p-3 font-bold w-full sm:w-auto lg:w-55 mt-6 transition-colors duration-200 bg-[#f5577c] hover:bg-[#d83b60] rounded text-white shadow-sm cursor-pointer">
                 Get Your USA eSIM Now
               </button>
             </Link>
