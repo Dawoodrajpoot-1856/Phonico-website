@@ -4,7 +4,7 @@ import { getBlogs } from "@/services/blogs.services";
 import BlogDetailContent from "@/components/apiData/BlogDetails";
 
 interface PageProps {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ category: string; slug: string }>;
 }
 
 async function BlogContent({ params }: PageProps) {
@@ -12,11 +12,14 @@ async function BlogContent({ params }: PageProps) {
   const decodedSlug = decodeURIComponent(slug);
   const allBlogs = await getBlogs();
 
-  const matched = allBlogs.find((b: any) => b.slug === decodedSlug);
+  const matched = allBlogs.find(
+    (b: any) => (b.slug || b.blog_slug || b.url) === decodedSlug,
+  );
+
   if (!matched) notFound();
 
   const relatedBlogs = allBlogs
-    .filter((b: any) => b.slug !== decodedSlug)
+    .filter((b: any) => (b.slug || b.blog_slug || b.url) !== decodedSlug)
     .slice(0, 3);
 
   return (

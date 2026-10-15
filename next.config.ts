@@ -4,10 +4,25 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   reactCompiler: true,
   partialPrefetching: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "platform.phonico.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "via.placeholder.com",
+        port: "",
+        pathname: "/**",
+      },
+    ],
+  },
 };
 
 export default nextConfig;
-
 // cache componnets     route hata k api function bnana h
 //  jo api server pa h woh servcer pa ho aur jp client ki h client pa ho
 //  next auth ma seesion sa lekar aik aik cheez krni h aik aik cheez krni h jwt kia h sab kuch

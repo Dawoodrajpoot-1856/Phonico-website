@@ -1,34 +1,23 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface SelectedPlanType {
-  id: number | string;
-  title: string;
-  name: string;
-  price: number | string;
-  data_usable: number | string;
+export interface CartPlan {
+  id?: number | string;
+  title?: string;
+  name?: string;
+  price?: number | string;
+  data_usable?: number | string;
   slug?: string;
   description?: string;
-  customPlanName: string;
-  customDetails: string;
-  customBgColor: string;
+  customPlanName?: string;
+  customDetails?: string;
+  customBgColor?: string;
 }
 
 interface PlanState {
-  selectedPlan: SelectedPlanType | null;
-  cart: SelectedPlanType[]; // Cart items store karne ke liye array type set kiya
+  cart: CartPlan[];
 }
 
-// Browser environment safe check for localStorage (Selected Plan)
-const getSavedPlanFromStorage = (): SelectedPlanType | null => {
-  if (typeof window !== "undefined") {
-    const saved = localStorage.getItem("selected_phonico_plan");
-    return saved ? JSON.parse(saved) : null;
-  }
-  return null;
-};
-
-// Browser environment safe check for localStorage (Cart Items)
-const getSavedCartFromStorage = (): SelectedPlanType[] => {
+const getSavedCartFromStorage = (): CartPlan[] => {
   if (typeof window !== "undefined") {
     const savedCart = localStorage.getItem("phonico_cart");
     return savedCart ? JSON.parse(savedCart) : [];
@@ -37,41 +26,25 @@ const getSavedCartFromStorage = (): SelectedPlanType[] => {
 };
 
 const initialState: PlanState = {
-  selectedPlan: getSavedPlanFromStorage(),
-  cart: getSavedCartFromStorage(), // Initial load par saved cart items uthayega
+  cart: [],
 };
 
 export const planSlice = createSlice({
   name: "plan",
   initialState,
   reducers: {
-    setSelectedPlan: (state, action: PayloadAction<SelectedPlanType>) => {
-      state.selectedPlan = action.payload;
-      if (typeof window !== "undefined") {
-        localStorage.setItem(
-          "selected_phonico_plan",
-          JSON.stringify(action.payload),
-        );
-      }
-    },
-    clearSelectedPlan: (state) => {
-      state.selectedPlan = null;
-      if (typeof window !== "undefined") {
-        localStorage.removeItem("selected_phonico_plan");
-      }
+    hydrateCart: (state, action: PayloadAction<CartPlan[]>) => {
+      state.cart = action.payload;
     },
 
-    // --- CART REDUCERS ---
-    addToCart: (state, action: PayloadAction<SelectedPlanType>) => {
+    addToCart: (state, action: PayloadAction<CartPlan>) => {
       state.cart.push(action.payload);
-      // LocalStorage mein cart update karein
       if (typeof window !== "undefined") {
         localStorage.setItem("phonico_cart", JSON.stringify(state.cart));
       }
     },
     removeFromCart: (state, action: PayloadAction<{ id: number | string }>) => {
       state.cart = state.cart.filter((item) => item.id !== action.payload.id);
-      // LocalStorage mein filter ke baad update karein
       if (typeof window !== "undefined") {
         localStorage.setItem("phonico_cart", JSON.stringify(state.cart));
       }
@@ -85,10 +58,10 @@ export const planSlice = createSlice({
   },
 });
 
-// Naye actions ko bhi export mein add kar diya
+export const getSavedCart = getSavedCartFromStorage;
+
 export const {
-  setSelectedPlan,
-  clearSelectedPlan,
+  hydrateCart,
   addToCart,
   removeFromCart,
   clearCart,

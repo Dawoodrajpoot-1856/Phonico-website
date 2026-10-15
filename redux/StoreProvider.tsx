@@ -1,26 +1,20 @@
 "use client";
 
-import { startTransition, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Provider } from "react-redux";
-import { makeStore, AppStore } from "./store";
-
-let clientStore: AppStore | undefined;
+import { getSavedCart, hydrateCart } from "./planSlice";
+import { makeStore } from "./store";
 
 export default function StoreProvider({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [store, setStore] = useState<AppStore | null>(null);
+  const [store] = useState(makeStore);
 
   useEffect(() => {
-    clientStore ??= makeStore();
-    startTransition(() => {
-      setStore(clientStore!);
-    });
-  }, []);
-
-  if (!store) return null;
+    store.dispatch(hydrateCart(getSavedCart()));
+  }, [store]);
 
   return <Provider store={store}>{children}</Provider>;
 }

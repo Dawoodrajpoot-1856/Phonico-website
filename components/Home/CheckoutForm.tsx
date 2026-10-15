@@ -1,14 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { addToCart } from "@/redux/planSlice";
+import { useAppSelector } from "@/redux/hooks";
 import CheckoutSkeleton from "@/components/Sekeltons/CheckoutSkeleton";
 
 export default function CheckoutForm() {
   const [isMounted, setIsMounted] = useState(false);
-  const dispatch = useAppDispatch();
-  const currentPlan = useAppSelector((state) => state.plan.selectedPlan);
+  const currentPlan = useAppSelector((state) => state.plan.cart[0] ?? null);
 
   useEffect(() => {
     setIsMounted(true);
@@ -17,13 +15,6 @@ export default function CheckoutForm() {
   if (!isMounted) {
     return <CheckoutSkeleton />;
   }
-
-  const handleAddToCart = () => {
-    if (currentPlan) {
-      dispatch(addToCart(currentPlan));
-      alert("Plan added to cart!");
-    }
-  };
 
   return (
     <div className="w-full max-w-4xl mx-auto bg-[#faf5f0] p-4 sm:p-6 flex flex-col gap-6 my-6 sm:my-10 rounded-lg shadow-xs">
@@ -88,7 +79,6 @@ export default function CheckoutForm() {
       </div>
 
       <button
-        onClick={handleAddToCart}
         className="w-full p-3 rounded-xl font-bold bg-white hover:text-white hover:bg-[#EE5E7F] text-[#EE5E7F] border-[#fbc4d0] border-2 transition-all text-sm tracking-wide shadow-sm uppercase cursor-pointer"
       >
         Pay now

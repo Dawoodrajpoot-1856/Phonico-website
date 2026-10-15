@@ -1,7 +1,6 @@
-"use client";
 import React from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import Footer from "@/components/Home/Footer";
 import { ArrowUpRight } from "lucide-react";
 
@@ -11,20 +10,13 @@ interface BlogDetailContentProps {
   slug: string;
 }
 
-const BlogDetailContent = ({
+export default function BlogDetailContent({
   initialBlog,
   initialRelatedBlogs,
   slug,
-}: BlogDetailContentProps) => {
-  const router = useRouter();
+}: BlogDetailContentProps) {
   const blog = initialBlog;
   const relatedBlogs = initialRelatedBlogs;
-
-  const handleBlogClick = (blogSlug: string) => {
-    if (blogSlug) {
-      router.push(`/blog/${blogSlug}`);
-    }
-  };
 
   const getCategoryName = (b: any) => b?.blog_category?.name || "Travel Tips";
 
@@ -50,20 +42,28 @@ const BlogDetailContent = ({
   return (
     <>
       <div className="w-full max-w-[1270px] mx-auto px-4 sm:px-6">
-        <img
-          src={blog.image || "https://via.placeholder.com/1270x700"}
-          alt={blog.name || "Blog Image"}
-          className="w-full h-[90vh] object-cover rounded-b-3xl"
-        />
+        <div className="relative w-full h-[90vh] rounded-b-3xl overflow-hidden">
+          <Image
+            src={blog.image || "https://via.placeholder.com/1270x700"}
+            alt={blog.name || "Blog Image"}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+        </div>
       </div>
 
       <div className="w-full max-w-[1270px] mx-auto px-4 sm:px-6 mt-8">
         <div className="flex flex-row items-center gap-3 mt-5">
-          <img
-            className="w-10 h-10 rounded-full object-cover"
-            src={blog.author_image || "https://via.placeholder.com/40"}
-            alt={blog.author_name || "Author"}
-          />
+          <div className="relative w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
+            <Image
+              src={blog.author_image || "https://via.placeholder.com/40"}
+              alt={blog.author_name || "Author"}
+              fill
+              className="object-cover"
+            />
+          </div>
           <div>
             <p className="text-sm font-semibold text-gray-800">
               {blog.author_name || "Anonymous"}
@@ -92,11 +92,14 @@ const BlogDetailContent = ({
 
       <div className="w-full flex justify-center mt-12 px-4">
         <div className="bg-white rounded-2xl border border-gray-100 bg-gray-50 shadow-sm p-8 w-full max-w-2xl text-center">
-          <img
-            className="w-14 h-14 rounded-full object-cover mx-auto"
-            src={blog.author_image || "https://via.placeholder.com/56"}
-            alt={blog.author_name || "Author"}
-          />
+          <div className="relative w-14 h-14 rounded-full overflow-hidden mx-auto">
+            <Image
+              src={blog.author_image || "https://via.placeholder.com/56"}
+              alt={blog.author_name || "Author"}
+              fill
+              className="object-cover"
+            />
+          </div>
           <p className="font-bold text-gray-900 mt-3 text-lg">
             {blog.author_name || "Anonymous"}
           </p>
@@ -105,7 +108,7 @@ const BlogDetailContent = ({
       </div>
 
       {relatedBlogs.length > 0 && (
-        <div className="w-full max-w-[1270px] mx-auto px-4 sm:px-6 mt-14 mb-16">
+        <div className="w-full max-w-[1270px]  mx-auto px-4 sm:px-6 mt-14 mb-16">
           <h2 className="font-semibold text-2xl mb-6">Related Blogs</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {relatedBlogs.map((rBlog: any, index: number) => (
@@ -114,12 +117,18 @@ const BlogDetailContent = ({
                 className="w-full flex flex-col justify-between rounded-2xl overflow-hidden bg-white shadow-sm border border-gray-100 hover:shadow-md transition duration-300"
               >
                 <div className="p-2">
-                  <img
-                    src={rBlog.image || "https://via.placeholder.com/390x240"}
-                    alt={rBlog.name || "Blog Image"}
-                    className="w-full h-56 rounded object-cover cursor-pointer"
-                    onClick={() => handleBlogClick(rBlog.slug)}
-                  />
+                  <Link
+                    href={`/blog/${rBlog.slug}`}
+                    className="relative block w-full h-56 rounded overflow-hidden"
+                  >
+                    <Image
+                      src={rBlog.image || "https://via.placeholder.com/390x240"}
+                      alt={rBlog.name || "Blog Image"}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover cursor-pointer hover:scale-105 transition-transform duration-300"
+                    />
+                  </Link>
 
                   <div className="p-5 pb-2">
                     <span className="inline-block px-3 py-1 text-sm font-medium text-[#ee5e7f] bg-red-50 rounded-full">
@@ -127,18 +136,18 @@ const BlogDetailContent = ({
                     </span>
 
                     <div className="flex flex-row justify-between items-start gap-2 mt-3">
-                      <h3
-                        onClick={() => handleBlogClick(rBlog.slug)}
+                      <Link
+                        href={`/blog/${rBlog.slug}`}
                         className="text-lg font-bold text-gray-900 line-clamp-2 leading-tight cursor-pointer hover:text-[#ee5e7f] transition-colors"
                       >
                         {rBlog.name || "Untitled Blog"}
-                      </h3>
-                      <button
-                        onClick={() => handleBlogClick(rBlog.slug)}
+                      </Link>
+                      <Link
+                        href={`/blog/${rBlog.slug}`}
                         className="text-gray-500 hover:text-[#ee5e7f] p-1 transition flex-shrink-0"
                       >
                         <ArrowUpRight size={18} />
-                      </button>
+                      </Link>
                     </div>
 
                     <p className="mt-2 text-gray-600 text-sm leading-relaxed line-clamp-3">
@@ -149,13 +158,16 @@ const BlogDetailContent = ({
 
                 <div className="p-5 pt-2 flex flex-row items-center justify-between border-t border-gray-50 mt-auto">
                   <div className="flex flex-row items-center gap-3">
-                    <img
-                      className="w-9 h-9 rounded-full object-cover"
-                      src={
-                        rBlog.author_image || "https://via.placeholder.com/40"
-                      }
-                      alt={rBlog.author_name || "Author"}
-                    />
+                    <div className="relative w-9 h-9 rounded-full overflow-hidden flex-shrink-0">
+                      <Image
+                        src={
+                          rBlog.author_image || "https://via.placeholder.com/40"
+                        }
+                        alt={rBlog.author_name || "Author"}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
                     <span className="text-sm font-medium text-gray-700">
                       {rBlog.author_name || "Anonymous"}
                     </span>
@@ -171,6 +183,4 @@ const BlogDetailContent = ({
       <Footer />
     </>
   );
-};
-
-export default BlogDetailContent;
+}

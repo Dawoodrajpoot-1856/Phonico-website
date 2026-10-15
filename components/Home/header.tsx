@@ -14,7 +14,7 @@ import {
 import { useAppSelector, useAppDispatch } from "@/redux/hooks";
 import { removeFromCart } from "@/redux/planSlice";
 import { signOut, useSession } from "next-auth/react";
-import MobileMenu from "./MobileMenu"; // <-- Mobile menu imported here
+import MobileMenu from "./MobileMenu";
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -165,7 +165,6 @@ const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* Rendered separated MobileMenu component */}
       <MobileMenu
         isOpen={isOpen}
         setIsOpen={setIsOpen}
@@ -174,7 +173,6 @@ const Header: React.FC = () => {
         handleLogout={handleLogout}
       />
 
-      {/* Cart Drawer */}
       {isCartOpen && (
         <div
           className="fixed inset-0 bg-black/40 z-[60]"

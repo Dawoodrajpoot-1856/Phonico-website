@@ -1,7 +1,10 @@
 import { apiClient } from "@/lib/apiClient";
+import { cacheLife } from "next/cache";
 
 export async function getBlogs() {
   "use cache";
+
+  cacheLife("hours");
 
   try {
     const data: any = await apiClient("/landing/blog");

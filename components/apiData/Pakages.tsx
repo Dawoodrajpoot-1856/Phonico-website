@@ -1,9 +1,10 @@
-import { getGuestPlans } from "@/services/plans.services";
 import PackagesList from "./PakagesList";
+import type { GuestPlan } from "@/lib/planPresentation";
+import { getGuestPlans } from "@/services/plans.services";
 
-const Packages = async () => {
-  const getPlans = await getGuestPlans();
-  const plans = Array.isArray(getPlans) ? getPlans : [];
+const Packages = async ({ plans }: { plans?: GuestPlan[] } = {}) => {
+  const fetchedPlans = plans ?? (await getGuestPlans());
+  const resolvedPlans = Array.isArray(fetchedPlans) ? fetchedPlans : [];
 
   return (
     <section
@@ -19,7 +20,7 @@ const Packages = async () => {
           <span className="text-[#ec3c65] mt-2 block">Expectations! </span>
         </h1>
 
-        <PackagesList plans={plans} />
+        <PackagesList plans={resolvedPlans} />
       </div>
     </section>
   );

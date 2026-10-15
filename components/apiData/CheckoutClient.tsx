@@ -1,18 +1,9 @@
 "use client";
 
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { addToCart } from "@/redux/planSlice";
+import { useAppSelector } from "@/redux/hooks";
 
 export default function CheckoutClient() {
-  const dispatch = useAppDispatch();
-  const currentPlan = useAppSelector((state) => state.plan.selectedPlan);
-
-  const handleAddToCart = () => {
-    if (currentPlan) {
-      dispatch(addToCart(currentPlan));
-      alert("Plan added to cart!");
-    }
-  };
+  const currentPlan = useAppSelector((state) => state.plan.cart[0] ?? null);
 
   return (
     <>
@@ -76,7 +67,6 @@ export default function CheckoutClient() {
         </div>
 
         <button
-          onClick={handleAddToCart}
           className="w-full p-3 rounded-xl font-bold bg-white hover:text-white hover:bg-[#EE5E7F] text-[#EE5E7F] border-[#fbc4d0] border-2 transition-all text-sm tracking-wide shadow-sm uppercase cursor-pointer"
         >
           Pay now
